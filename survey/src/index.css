@@ -11,3 +11,11 @@
   margin-top: 50px;
 }
 
+.your-surveys {
+  font-weight: bold;
+}
+
+.addSurBtn {
+  color: Gray;
+  font-weight: bold;
+}

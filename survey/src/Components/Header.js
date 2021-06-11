@@ -19,7 +19,7 @@ function Header() {
             <AppBar position="static" style={style}>
                 <Toolbar>
                     <Typography variant="h6" className="title">
-                        <Link href="#" onClick={preventDefault} color="secondary">
+                        <Link to="/login" onClick={preventDefault} color="secondary">
                             <img src={app_logo} title="logo" alt="Logo" />
                         </Link>
                     </Typography>
