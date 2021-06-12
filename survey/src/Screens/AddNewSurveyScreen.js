@@ -18,6 +18,7 @@ import { BsTrash } from 'react-icons/bs'
 import Switch from '@material-ui/core/Switch'
 import MoreVert from '@material-ui/icons/MoreVert'
 import Button from '@material-ui/core/Button'
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 
 function AddNewSurveyScreen() {
 const [questions, setQuestions] = useState(
@@ -79,8 +80,8 @@ function questionsUI() {
                 <div className="question-boxes">
                     <AccordionDetails className="add-question">
                         <div className="add-question-top">
-                            <input type="text" className="question" placeholder="Question" value={ques.questionText}></input>
-                            <CropOriginalIcon style={{color: "#5f6368"}} />
+                            <input type="text" className="question" placeholder="Question" value={ques.questionText} ></input>
+                            {/* <CropOriginalIcon style={{color: "#5f6368"}} /> */}
                             <Select className="select" style={{color: "#5f6368", fontSize: "13px"}}>
                                 <MenuItem id="text" value="Text" ><SubjectIcon style={{marginRight:"10px"}} />Paragraph</MenuItem>
                                 <MenuItem id="checkbox" value="Checkbox" ><CheckBoxIcon style={{marginRight:"10px", color: "#70757a"}} checked />Checkboxes</MenuItem>
@@ -98,7 +99,7 @@ function questionsUI() {
                                    <input type="text" className="text-input" placeholder="option" value={ques.options[j].optionText}></input>
                                </div>
 
-                               <CropOriginalIcon style={{color: "#5f6368"}} />
+                               {/* <CropOriginalIcon style={{color: "#5f6368"}} /> */}
                                <IconButton aria-label="delete">
                                    <CloseIcon />
                                </IconButton>
@@ -135,9 +136,13 @@ function questionsUI() {
                                     <MoreVert />
                                </IconButton>
                             </div>
-
                         </div>
                     </AccordionDetails>
+                        <div className="question-edit">
+                            <AddCircleOutlineIcon className="edit" />
+
+                        </div>
+
                 </div>
             </Accordion>
         </div>

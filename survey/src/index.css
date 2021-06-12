@@ -42,7 +42,7 @@
 .survey-title {
   box-sizing: border-box;
   font-family: "Times New Roman', Times, serif";
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 40px;
   width: 100%;
@@ -153,7 +153,23 @@
   border-left: 6px solid gray;
 }
 
+.question-edit {
+  background-color: #F4F4F9;
+  display: flex;
+  flex-direction: column;
+  margin-right: 12px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 1px;
+  border-radius: 3px;
+  height: 40px;
+  width: 35px;
+}
 
+.edit {
+  color: rgb(78, 76, 76);
+  padding: 8px 5px;
+}
 
 
 
