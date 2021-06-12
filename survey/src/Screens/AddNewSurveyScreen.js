@@ -13,81 +13,92 @@ import Radio from '@material-ui/core/Radio'
 import ShortTextIcon from '@material-ui/icons/ShortText'
 import { IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
-import FilterNoneIcon from '@material-ui/icons/FilterNone'
 import { BsTrash } from 'react-icons/bs'
-import Switch from '@material-ui/core/Switch'
-import MoreVert from '@material-ui/icons/MoreVert'
 import Button from '@material-ui/core/Button'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 
 function AddNewSurveyScreen() {
+
 const [questions, setQuestions] = useState(
-    [{ questionText: "How do you rate our services?" ,
-       questionType: "radio",
-       options : [
-           {optionText: "Excellent"},
-           {optionText: "Good"},
-           {optionText: "Fair"},
-           {optionText: "Poor"},
-           {optionText: "Bad"}
-       ],
-       open: true,
-       required: false
-    }]
+    [
+        {   questionText: "Type Question" ,
+            questionType: "radio",
+            options : [
+                {optionText: "Option 1"},
+            ],
+            open: true,
+
+        }
+   ]
 )
+
+function questionChangeHandler(text, index) {
+    var newQuestion = [...questions]
+    newQuestion[index].questionText = text;
+    setQuestions(newQuestion)
+    console.log(newQuestion)
+}
+
+function addQuestionType(index, type) {
+    let qs = [...questions]
+    console.log(type)
+    qs[index].questionType = type;
+    setQuestions(qs)
+}
+
+function optionChangeHandler(text, index, j) {
+    var optionsQuestion = [...questions]
+    optionsQuestion[index].options[j].optionText = text;
+    setQuestions(optionsQuestion)
+    console.log(optionsQuestion)
+}
+
+function removeOption(index, j){
+    var removeOptionQuestion = [...questions]
+    if(removeOptionQuestion[index].options.length > 1) {
+        removeOptionQuestion[index].options.splice(j, 1)
+        setQuestions(removeOptionQuestion)
+        console.log(index + "__" + j)
+    }
+}
+
+function addOption(index){
+    var optionsOfQuestion = [...questions];
+    optionsOfQuestion[index].options.push({optionText: "Option " + (optionsOfQuestion[index].options.length + 1)})
+    console.log(optionsOfQuestion);
+    setQuestions(optionsOfQuestion)
+  }
+
+function deleteQuestion(index){
+    let qs = [...questions] 
+    if(questions.length > 1){
+      qs.splice(index, 1);
+    }
+    setQuestions(qs)
+  }
+
+function addMoreQuestionField(){
+    setQuestions(questions=> [...questions, {questionText: "Question", questionType:"radio", options : [{optionText: "Option 1"}], open: true }]);
+}
 
 function questionsUI() {
     return questions.map((ques, index) => (
         <div>
             <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}>
-                {/* <AccordionSummary aria-controls = "panelia-content"
-                                  id = "panelia-header"
-                                  emaluation = {1}
-                                  style = {{width: "100%"}}>
-                                      { questions[index].open ? (
-                                          <div className="saved-question">
-                                              <Typography style={{fontSize:"15px",
-                                                                  fontWeight:"400",
-                                                                  letterSpacing:'0.1px',
-                                                                  lineHeight: '24px',
-                                                                  paddingBottom: "8px"
-                                                                }} >
-                                                                    {index+1}.{questions[index].questionText}
-                                              </Typography>
-                                              {ques.options.map((op, j) => (
-                                                  <div key={j} >
-                                                      <div style={{display: 'flex'}}>
-                                                          <FormControlLabel style={{marginLeft:"5px", marginBottom:"5px"}} disabled control={<input type={ques.questionType} 
-                                                              color="primary" style={{marginRight:"3px"}} required={ques.type} />} label={
-                                                                  <Typography style={{fontFamily:"Times New Roman', Times, serif",
-                                                                                      fontSize:'13px',
-                                                                                      fontWeight:'400',
-                                                                                      letterSpacing: '0.2px',
-                                                                                      lineHeight:'20px',
-                                                                                      color: '#202124'}}>
-                                                                      {ques.options[j].optionText}
-                                                                  </Typography>
-                                                              } 
-                                                           />
-                                                      </div>
-                                                  </div>
-                                              )
-                                              )}
-                                          </div>
-                                      ): "" }
-                </AccordionSummary> */}
 
                 <div className="question-boxes">
                     <AccordionDetails className="add-question">
+                        
                         <div className="add-question-top">
-                            <input type="text" className="question" placeholder="Question" value={ques.questionText} ></input>
-                            {/* <CropOriginalIcon style={{color: "#5f6368"}} /> */}
-                            <Select className="select" style={{color: "#5f6368", fontSize: "13px"}}>
-                                <MenuItem id="text" value="Text" ><SubjectIcon style={{marginRight:"10px"}} />Paragraph</MenuItem>
-                                <MenuItem id="checkbox" value="Checkbox" ><CheckBoxIcon style={{marginRight:"10px", color: "#70757a"}} checked />Checkboxes</MenuItem>
-                                <MenuItem id="radio" value="Radio" ><Radio style={{marginRight:"10px", color: "#70757a"}} checked />Multiple Choice</MenuItem>
+                            <input type="text" className="question" placeholder="Question" value={ques.questionText} onChange={(e)=>{questionChangeHandler(e.target.value, index)}}></input>
+                            <Select value="Radio" className="select" style={{color: "#5f6368", fontSize: "13px"}}>
+                                <MenuItem id="text" value="Text" onClick={()=>{addQuestionType(index, "text")}} ><SubjectIcon style={{marginRight:"10px"}} />Paragraph</MenuItem>
+                                <MenuItem id="checkbox" value="Checkbox" onClick={()=>{addQuestionType(index, "checkbox")}}><CheckBoxIcon style={{marginRight:"10px", color: "#70757a"}} checked />Checkboxes</MenuItem>
+                                <MenuItem id="radio" value="Radio" onClick={()=>{addQuestionType(index, "radio")}}><Radio style={{marginRight:"10px", color: "#70757a"}} checked />Multiple Choice</MenuItem>
                             </Select>
                         </div>
+
+
                         {ques.options.map((op, j) => 
                            <div className="add-question-body" key={j}>
                                {
@@ -96,53 +107,41 @@ function questionsUI() {
                                    <ShortTextIcon style={{marginRight:"10px"}} />
                                }
                                <div>
-                                   <input type="text" className="text-input" placeholder="option" value={ques.options[j].optionText}></input>
+                                   <input type="text" className="text-input" placeholder="Text" value={ques.options[j].optionText} onChange={(e)=>{optionChangeHandler(e.target.value, index, j)}}></input>
                                </div>
 
                                {/* <CropOriginalIcon style={{color: "#5f6368"}} /> */}
                                <IconButton aria-label="delete">
-                                   <CloseIcon />
+                                   <CloseIcon onClick={()=>{removeOption(index, j)}} />
                                </IconButton>
                            </div>
                         )}
-
-                        {ques.options.length < 5 ? (
                             <div className="add-question-body">
                                 <FormControlLabel disabbled control = {
                                     (ques.questionType!=="text") ?
-                                    <input type={ques.questionType} color="primary" inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    <input type={ques.questionType} color="primary" inputprops={{ 'aria-label': 'secondary checkbox' }}
                                     style={{marginLeft:"10px", marginRight:"10px"}} disabled /> :
                                     <ShortTextIcon style={{marginRight:"10px"}} />
                                 } label = {
                                     <div>
-                                        <input type="text" className="text-input" style={{fontSize:"13px", width:"60px"}} placeholder="Add other"></input>
-                                        <Button size="small" style={{textTransform: 'none', color: "#4285f4", fontSize:"13px", fontWeight:"600"}}>Add Option</Button>
+                                        <input type="text" className="text-input" style={{fontSize:"20px", width:"100px"}} placeholder="Add other"></input>
+                                        <Button onClick={()=>{addOption(index)}} size="small" style={{textTransform: 'none', color: "#4285f4", fontSize:"13px", fontWeight:"600"}}>Add Option</Button>
                                     </div>
                                 }
                                 />
                             </div>
-                        ) : ""}
 
                         <div className="add-footer">
                             <div className="add-question-bottom">
-                               <IconButton aria-label="copy" >
-                                   <FilterNoneIcon />
-                               </IconButton>
-                               <IconButton aria-label="delete">
+                               <IconButton aria-label="delete" onClick={()=>{deleteQuestion(index)}}>
                                    <BsTrash />
-                               </IconButton>
-                                   <span style={{ color:"#5f6368", fontSize: "13px" }} > Required <Switch name="checked" color="primary" checked={false} /> </span> 
-                               <IconButton>
-                                    <MoreVert />
                                </IconButton>
                             </div>
                         </div>
                     </AccordionDetails>
                         <div className="question-edit">
-                            <AddCircleOutlineIcon className="edit" />
-
+                            <AddCircleOutlineIcon onClick={addMoreQuestionField} className="edit" />
                         </div>
-
                 </div>
             </Accordion>
         </div>
