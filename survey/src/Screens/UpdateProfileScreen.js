@@ -12,7 +12,7 @@ function UpdateProfileScreen() {
                         }
                         
     const btnstyle = { 
-                        margin:'5rem 0', 
+                        margin:'3rem 0', 
                         color: 'black', 
                      }
     return(
