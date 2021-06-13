@@ -21,13 +21,13 @@ const useStyles = makeStyles({
 
 function ViewForm(props) {
     const classes = useStyles();
-    const questions  = props.dataSrc;
+    //const questions  = props.dataSrc.current;
 
    
         function questionsUI() {
-            return questions.map((ques, index) => (
+            return props.dataSrc.current.map((ques, index) => (
                 <div key={index}>
-                    <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}>
+                    {/* <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}> */}
                         <div className="question-boxes">
                                         <AccordionDetails className="add-question">
                                             
@@ -78,7 +78,7 @@ function ViewForm(props) {
     
                                         </AccordionDetails>
                         </div>
-                    </Accordion>
+                    {/* </Accordion> */}
                 </div>
             ))
         };

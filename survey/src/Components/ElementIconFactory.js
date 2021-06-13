@@ -1,13 +1,18 @@
 import React from 'react';
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import ShortTextIcon from '@material-ui/icons/ShortText'
+import { TextField } from '@material-ui/core';
 
 function getComponentIcon(questionType, IconDisable) {
     
     switch(questionType) {
        
         case "text":
-            return (<ShortTextIcon style={{marginRight:"10px"}} />);
+            //return (<ShortTextIcon style={{marginRight:"10px"}} />);
+            return (<TextField 
+            type="text" 
+            className="question" 
+            placeholder="Write Answer"/>);
 
         case "checkbox":
           return(

@@ -16,57 +16,60 @@ import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 
 function EditForm(props) {
 
-const [questions, setQuestions] = useState( props.dataSrc);
+const [questions, setQuestions] = useState( props.dataSrc.current);
 
 
 
 function questionChangeHandler(text, index) {
-    var newQuestion = [...questions]
+    var newQuestion = [...props.dataSrc.current]
     newQuestion[index].questionText = text;
     setQuestions(newQuestion)
     console.log(newQuestion)
 }
 
 function addQuestionType(index, type) {
-    let qs = [...questions]
+    let qs = [...props.dataSrc.current]
     console.log(type)
     qs[index].questionType = type;
     setQuestions(qs)
 }
 
 function optionChangeHandler(text, index, OptionIndex) {
-    var optionsQuestion = [...questions]
+    var optionsQuestion = [...props.dataSrc.current]
     optionsQuestion[index].options[OptionIndex] = text;
     setQuestions(optionsQuestion)
     console.log(optionsQuestion)
 }
 
 function removeOption(index, OptionIndex){
-    var removeOptionQuestion = [...questions]
+    var removeOptionQuestion = [...props.dataSrc.current]
     if ( removeOptionQuestion[index].options.length > 1) {
         removeOptionQuestion[index].options.splice(OptionIndex,1)
+        props.dataSrc.current = removeOptionQuestion;
         setQuestions(removeOptionQuestion)
         console.log(index + "__" + OptionIndex)
     }
 }
 
 function addOption(index){
-    var optionsOfQuestion = [...questions];
+    var optionsOfQuestion = [...props.dataSrc.current];
     optionsOfQuestion[index].options.push("Text " + (optionsOfQuestion[index].options.length + 1))
     console.log(optionsOfQuestion);
+    props.dataSrc.current = optionsOfQuestion;
     setQuestions(optionsOfQuestion)
   }
 
 function deleteQuestion(index){
-    let qs = [...questions] 
-    if(questions.length > 1){
+    var qs = [...props.dataSrc.current] 
+    if(qs.length > 1){
       qs.splice(index, 1);
     }
+    props.dataSrc.current = qs;
     setQuestions(qs)
   }
 
 function addMoreQuestionField(){
-    setQuestions(questions=> [...questions, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
+    setQuestions(props.dataSrc.current=[...props.dataSrc.current, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
 }
 
 
@@ -177,10 +180,11 @@ function questionsUI() {
                                                 <ElementIconFactory questionType={ques.questionType}  disabled/>
                                             }
                                             label = {
+                                                (ques.questionType!=="text") ?
                                                 <div>
                                                     {/* <input type="text" className="text-input" style={{fontSize:"20px", width:"100px"}} placeholder="Add other"></input> */}
                                                     <Button onClick={()=>{addOption(index)}} size="small" style={{textTransform: 'none', color: "#4285f4", fontSize:"13px", fontWeight:"600"}}>Add Option</Button>
-                                                </div>
+                                                </div>:null
                                             }
                                             />
                                         </div>

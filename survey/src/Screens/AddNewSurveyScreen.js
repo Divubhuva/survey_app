@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useRef, useState} from 'react'
 import EditForm from '../Components/EditForm'
 import IconButton from '@material-ui/core/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -25,6 +25,8 @@ function AddNewSurveyScreen() {
         }
    ];
 
+   var refquestion = useRef(questions);
+   
    const [openPreview, setOpenPreview] = useState(false);
 
     return (
@@ -55,9 +57,9 @@ function AddNewSurveyScreen() {
                 <div className="section">
                     {
                     openPreview ?
-                    <ViewForm dataSrc={questions}/>
+                    <ViewForm dataSrc={refquestion}/>
                     :
-                    <EditForm dataSrc={questions}/>
+                    <EditForm dataSrc={refquestion}/>
                     }
                 </div>
                 
