@@ -5,10 +5,15 @@ import HomeScreen from './Screens/HomeScreen';
 import UpdateProfileScreen from './Screens/UpdateProfileScreen';
 import YourSurveysScreen from './Screens/YourSurveysScreen'
 import AddNewSurveyScreen from './Screens/AddNewSurveyScreen';
-
-
+import DummyData from './Data.json'
 
 function App() {
+  
+  var isDataLoaded = localStorage.getItem('DataBase');
+  if(!isDataLoaded) {
+    localStorage.setItem('DataBase', JSON.stringify(DummyData))
+  }
+  
   return (
     <Router>
         <div className="App">

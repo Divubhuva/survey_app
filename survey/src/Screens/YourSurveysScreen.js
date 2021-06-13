@@ -11,26 +11,33 @@ import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
+
 const useStyles = makeStyles((theme) => ({
     editIcon: {
         margin: theme.spacing(0, 5, 0),
       },
   }));
 
-  function generate(element) {
-    return [0, 1, 2, 3].map((value) =>
-      React.cloneElement(element, {
-        key: value,
-      }),
-    );
-  }
+  
+  const Database = JSON.parse(localStorage.getItem("DataBase"));
+  
+//   function generate(element) {
+//     Database.surveys.map((value,index) => {
+//       return (
+//         React.cloneElement(element, {
+//           key: index,
+//         })
+//       )
+//     })
+// }
+
 
 function YourSurveysScreen() {
     const history = useHistory()
     const classes = useStyles();
-
-
     
+    
+    console.log(JSON.parse(localStorage.getItem("DataBase")));
 
     const addSurvey = () => {
         const id = uuid()
@@ -48,10 +55,13 @@ function YourSurveysScreen() {
             </Button>
             <div className={classes.demo}>
             <List >
-              {generate(
-                <ListItem className="List-view">
+              { Database.surveys.map((value,index)=> {
+
+                return (
+                  
+                <ListItem className="List-view" key={index}>
                   <ListItemText
-                    primary="Single-line item"
+                    primary={value.name}
                   />
 
                   <ListItemSecondaryAction>
@@ -65,8 +75,10 @@ function YourSurveysScreen() {
                       <VisibilityIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
-                </ListItem>,
-              )}
+                </ListItem>
+                
+                 
+              )})}
             </List>
           </div>
         </div>
