@@ -23,14 +23,15 @@ function EditScreen(props) {
     
     
     const { index } = useParams();
-    var questions  = Database.surveys[index].elements;
+    var survey  = Database.surveys[index];
     
-    var refquestion = useRef(questions); 
+    var refsurvey = useRef(survey); 
 
     function saveChange( ){
-        Database.surveys[index].elements = questions;
+        Database.surveys[index] = refsurvey.current;
         const stringData = JSON.stringify(Database);
         localStorage.setItem("DataBase",stringData);
+       
     }
 
         return (
@@ -41,7 +42,7 @@ function EditScreen(props) {
                 <div className="question-form">
                     <br />
                     <div className="section">
-                        <EditForm dataSrc={refquestion}/>
+                        <EditForm dataSrc={refsurvey}/>
                     </div>
                     <div className="save-btn">
                         <Button onClick={saveChange}type='submit' variant="contained" style={btnstyle} fullWidth>Save Changes</Button>

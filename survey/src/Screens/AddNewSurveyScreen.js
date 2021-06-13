@@ -25,20 +25,18 @@ function AddNewSurveyScreen() {
         }
    ];
 
-   var refquestion = useRef(questions);
+   var newSurvery = {
+        name: "Survey Name",
+        elements : questions 
+    }
+   var refSurvey = useRef(newSurvery);
    
    const [openPreview, setOpenPreview] = useState(false);
 
-   function saveSurvey(nameofSurvey){
-    const newSurvery = {
-        name: nameofSurvey,
-        elements:questions 
-        
-        
-    }
+   function saveSurvey(){
     var data = localStorage.getItem("DataBase");
     var Database = JSON.parse(data);   
-    Database.surveys.push(newSurvery);
+    Database.surveys.push(refSurvey.current);
     const stringData = JSON.stringify(Database);
     localStorage.setItem("DataBase",stringData);
    }
@@ -70,15 +68,15 @@ function AddNewSurveyScreen() {
                 <div className="section">
                     {
                     openPreview ?
-                    <ViewForm dataSrc={refquestion}/>
+                    <ViewForm dataSrc={refSurvey}/>
                     :
-                    <EditForm dataSrc={refquestion}/>
+                    <EditForm dataSrc={refSurvey}/>
                     }
                 </div>
                 
             </div>
             <div className="save-btn">
-                    <Button onClick={()=>{saveSurvey("ggg")}} type='submit' variant="contained" style={btnstyle} fullWidth>Save Survey</Button>
+                    <Button onClick={saveSurvey} type='submit' variant="contained" style={btnstyle} fullWidth>Save Survey</Button>
             </div>
         </div>
 

@@ -16,60 +16,60 @@ import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 
 function EditForm(props) {
 
-const [questions, setQuestions] = useState( props.dataSrc.current);
+const [questions, setQuestions] = useState( props.dataSrc.current.elements);
 
 
 
 function questionChangeHandler(text, index) {
-    var newQuestion = [...props.dataSrc.current]
+    var newQuestion = [...props.dataSrc.current.elements]
     newQuestion[index].questionText = text;
     setQuestions(newQuestion)
     console.log(newQuestion)
 }
 
 function addQuestionType(index, type) {
-    let qs = [...props.dataSrc.current]
+    let qs = [...props.dataSrc.current.elements]
     console.log(type)
     qs[index].questionType = type;
     setQuestions(qs)
 }
 
 function optionChangeHandler(text, index, OptionIndex) {
-    var optionsQuestion = [...props.dataSrc.current]
+    var optionsQuestion = [...props.dataSrc.current.elements]
     optionsQuestion[index].options[OptionIndex] = text;
     setQuestions(optionsQuestion)
     console.log(optionsQuestion)
 }
 
 function removeOption(index, OptionIndex){
-    var removeOptionQuestion = [...props.dataSrc.current]
+    var removeOptionQuestion = [...props.dataSrc.current.elements]
     if ( removeOptionQuestion[index].options.length > 1) {
         removeOptionQuestion[index].options.splice(OptionIndex,1)
-        props.dataSrc.current = removeOptionQuestion;
+        props.dataSrc.current.elements = removeOptionQuestion;
         setQuestions(removeOptionQuestion)
         console.log(index + "__" + OptionIndex)
     }
 }
 
 function addOption(index){
-    var optionsOfQuestion = [...props.dataSrc.current];
+    var optionsOfQuestion = [...props.dataSrc.current.elements];
     optionsOfQuestion[index].options.push("Text " + (optionsOfQuestion[index].options.length + 1))
     console.log(optionsOfQuestion);
-    props.dataSrc.current = optionsOfQuestion;
+    props.dataSrc.current.elements = optionsOfQuestion;
     setQuestions(optionsOfQuestion)
   }
 
 function deleteQuestion(index){
-    var qs = [...props.dataSrc.current] 
+    var qs = [...props.dataSrc.current.elements] 
     if(qs.length > 1){
       qs.splice(index, 1);
     }
-    props.dataSrc.current = qs;
+    props.dataSrc.current.elements = qs;
     setQuestions(qs)
   }
 
 function addMoreQuestionField(){
-    setQuestions(props.dataSrc.current=[...props.dataSrc.current, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
+    setQuestions(props.dataSrc.current.elements=[...props.dataSrc.current.elements, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
 }
 
 
@@ -220,7 +220,17 @@ function questionsUI() {
                 <div className="section">
                     <div className="question-title-section">
                         <div className="question-form-header">
-                            <input type="text" className="survey-title" style={{color: "black"}} placeholder="Untitled survey"></input>
+                            <TextField 
+                            type="text" 
+                            className="survey-title" 
+                            style={{color: "black"}} 
+                            placeholder="Untitled survey"
+                            defaultValue={props.dataSrc.current.name }
+                            onChange={(e)=>{props.dataSrc.current.name = e.target.value}}
+                            >
+
+                            </TextField>
+                            
                         </div>
                     </div>
                     {questionsUI()}

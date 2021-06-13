@@ -24,7 +24,7 @@ function ViewForm(props) {
 
    
         function questionsUI() {
-            return props.dataSrc.current.map((ques, index) => (
+            return props.dataSrc.current.elements.map((ques, index) => (
                 <div key={index}>
                     {/* <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}> */}
                         <div className="question-boxes">
@@ -82,7 +82,27 @@ function ViewForm(props) {
             ))
         };
 
-        return (questionsUI());
+        return (
+           
+        <div className="section">
+                                                 <div className="question-title-section">
+                                                     <div className="question-form-header">
+                                                     <TextField 
+                                                type="text" 
+                                                className="question" 
+                                                InputProps={{
+                                                    readOnly: true
+                                                    
+                                                }}
+                                                value={props.dataSrc.current.name }
+                                                 ></TextField> 
+                                                         
+                                                     </div>
+                                                 </div>
+                                                 {questionsUI()}
+                                                 
+                                             </div>
+            );
     
 };
 

@@ -8,9 +8,9 @@ function ViewScreen(props) {
     const Database = JSON.parse(data);
     const { index } = useParams();
     
-    const questions  = Database.surveys[index].elements;
+    const survey  = Database.surveys[index];
 
-    var refquestion = useRef(questions); 
+    var refsurvey = useRef(survey); 
         return (
             <div>
                 <div>
@@ -19,7 +19,7 @@ function ViewScreen(props) {
                 <div className="question-form">
                     <br />
                     <div className="section">
-                        <ViewForm dataSrc={refquestion}/>
+                        <ViewForm dataSrc={refsurvey}/>
                     </div>
                 </div>
             </div>
