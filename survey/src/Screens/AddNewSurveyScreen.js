@@ -29,6 +29,19 @@ function AddNewSurveyScreen() {
    
    const [openPreview, setOpenPreview] = useState(false);
 
+   function saveSurvey(nameofSurvey){
+    const newSurvery = {
+        name: nameofSurvey,
+        elements:questions 
+        
+        
+    }
+    var data = localStorage.getItem("DataBase");
+    var Database = JSON.parse(data);   
+    Database.surveys.push(newSurvery);
+    const stringData = JSON.stringify(Database);
+    localStorage.setItem("DataBase",stringData);
+   }
     return (
         
         <div>
@@ -65,7 +78,7 @@ function AddNewSurveyScreen() {
                 
             </div>
             <div className="save-btn">
-                    <Button type='submit' variant="contained" style={btnstyle} fullWidth>Save Survey</Button>
+                    <Button onClick={()=>{saveSurvey("ggg")}} type='submit' variant="contained" style={btnstyle} fullWidth>Save Survey</Button>
             </div>
         </div>
 

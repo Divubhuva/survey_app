@@ -3,7 +3,6 @@ import React from 'react'
 
 
 import TextField from '@material-ui/core/TextField';
-import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import { makeStyles } from "@material-ui/core/styles";
 import ElementFactory from './ElementsFactory'

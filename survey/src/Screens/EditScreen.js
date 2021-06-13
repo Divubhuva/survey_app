@@ -7,6 +7,10 @@ import Button from '@material-ui/core/Button'
 
 function EditScreen(props) {
     
+    
+    
+
+
     const btnstyle = { 
         margin:'2rem 0', 
         color: 'black', 
@@ -23,6 +27,12 @@ function EditScreen(props) {
     
     var refquestion = useRef(questions); 
 
+    function saveChange( ){
+        Database.surveys[index].elements = questions;
+        const stringData = JSON.stringify(Database);
+        localStorage.setItem("DataBase",stringData);
+    }
+
         return (
             <div>
                 <div>
@@ -34,7 +44,7 @@ function EditScreen(props) {
                         <EditForm dataSrc={refquestion}/>
                     </div>
                     <div className="save-btn">
-                        <Button type='submit' variant="contained" style={btnstyle} fullWidth>Save Changes</Button>
+                        <Button onClick={saveChange}type='submit' variant="contained" style={btnstyle} fullWidth>Save Changes</Button>
                     </div>
                 </div>
             </div>
