@@ -10,8 +10,8 @@ function EditScreen(props) {
     
     
     const { index } = useParams();
-    
     const questions  = Database.surveys[index].elements;
+    
         return (
             <div>
                 <div className="question-form">

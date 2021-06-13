@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Select from '@material-ui/core/Select'
@@ -7,7 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import SubjectIcon from '@material-ui/icons/Subject'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
 import TextField from '@material-ui/core/TextField';
-import ShortTextIcon from '@material-ui/icons/ShortText'
 import { IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import { BsTrash } from 'react-icons/bs'
@@ -78,6 +76,7 @@ function addMoreQuestionField(){
 
 
 function questionsUI() {
+    
     return questions.map((ques, index) => (
         <div key={index}>
             {/* <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}> */}
@@ -128,7 +127,10 @@ function questionsUI() {
                                     </div>
 
 
-                                    {ques.options.map((OptionText, optionIndex) => 
+                                    {
+                                    
+                                    (ques.questionType !== "text") ?
+                                    ques.options.map((OptionText, optionIndex) => 
                                     <div 
                                     className="add-question-body" 
                                     key={optionIndex}>
@@ -157,7 +159,10 @@ function questionsUI() {
                                             <CloseIcon  />
                                         </IconButton>
                                     </div>
-                                    )}
+                                    )
+                                    : 
+                                    null
+                                    }
                                         <div className="add-question-body">
                                             <FormControlLabel disabled control = 
                                             // {

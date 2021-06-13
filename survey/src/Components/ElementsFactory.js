@@ -43,7 +43,9 @@ function getComponent(questionType, options) {
             </Select>  
           )
         default:
-          // code block
+            return (<TextField 
+                type="text"
+                 ></TextField>);
       }
 }
 
