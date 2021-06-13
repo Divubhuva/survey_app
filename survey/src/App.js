@@ -6,6 +6,8 @@ import UpdateProfileScreen from './Screens/UpdateProfileScreen';
 import YourSurveysScreen from './Screens/YourSurveysScreen'
 import AddNewSurveyScreen from './Screens/AddNewSurveyScreen';
 import DummyData from './Data.json'
+import EditScreen from './Screens/EditScreen';
+import ViewScreen from './Screens/ViewScreen';
 
 function App() {
   
@@ -26,7 +28,8 @@ function App() {
                   <Route path="/update" component={UpdateProfileScreen} />
                   <Route path="/yoursurveys" component={YourSurveysScreen} />
                   <Route path="/addsurvey/:id"> <AddNewSurveyScreen /> </Route> 
-                  
+                  <Route path="/editsurvey/:index"> <EditScreen /> </Route>
+                  <Route path="/viewsurvey/:index"> <ViewScreen /> </Route> 
               </Switch>
             </header>
           </div>

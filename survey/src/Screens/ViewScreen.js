@@ -1,14 +1,11 @@
 import React from 'react'
 import  {useParams} from "react-router-dom"
-import EditForm from '../Components/EditForm'
+import ViewForm from '../Components/ViewForm'
 
-function EditScreen(props) {
+function ViewScreen(props) {
     
     const data = localStorage.getItem("DataBase");
-   
     const Database = JSON.parse(data);
-    
-    
     const { index } = useParams();
     
     const questions  = Database.surveys[index].elements;
@@ -17,12 +14,11 @@ function EditScreen(props) {
                 <div className="question-form">
                     <br />
                     <div className="section">
-                        <EditForm dataSrc={questions}/>
+                        <ViewForm dataSrc={questions}/>
                     </div>
                 </div>
             </div>
         )
     }
     
-    export default EditScreen
-    
+export default ViewScreen

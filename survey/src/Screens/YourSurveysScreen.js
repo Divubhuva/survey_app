@@ -62,19 +62,26 @@ function YourSurveysScreen() {
                   />
 
                   <ListItemSecondaryAction>
-                    <IconButton className={classes.editIcon} edge="start" aria-label="edit">
+                    <IconButton 
+                    className={classes.editIcon} 
+                    edge="start" 
+                    aria-label="edit"
+                    href={"/editsurvey/"+index}
+                    >
                       <EditIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
 
                   <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="view">
+                    <IconButton 
+                    edge="end" 
+                    aria-label="view"
+                    href={"/viewsurvey/"+index}
+                    >
                       <VisibilityIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
-                </ListItem>
-                
-                 
+                </ListItem> 
               )})}
             </List>
           </div>
