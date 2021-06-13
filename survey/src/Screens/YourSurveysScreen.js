@@ -30,6 +30,8 @@ function YourSurveysScreen() {
     const classes = useStyles();
 
 
+    
+
     const addSurvey = () => {
         const id = uuid()
         console.log(id)
@@ -51,11 +53,13 @@ function YourSurveysScreen() {
                   <ListItemText
                     primary="Single-line item"
                   />
+
                   <ListItemSecondaryAction>
                     <IconButton className={classes.editIcon} edge="start" aria-label="edit">
                       <EditIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
+
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="view">
                       <VisibilityIcon />
