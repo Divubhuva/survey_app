@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import  {useParams} from "react-router-dom"
 import ViewForm from '../Components/ViewForm'
 
@@ -9,6 +9,8 @@ function ViewScreen(props) {
     const { index } = useParams();
     
     const questions  = Database.surveys[index].elements;
+
+    var refquestion = useRef(questions); 
         return (
             <div>
                 <div>
@@ -17,7 +19,7 @@ function ViewScreen(props) {
                 <div className="question-form">
                     <br />
                     <div className="section">
-                        <ViewForm dataSrc={questions}/>
+                        <ViewForm dataSrc={refquestion}/>
                     </div>
                 </div>
             </div>

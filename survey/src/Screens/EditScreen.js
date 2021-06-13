@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import  {useParams} from "react-router-dom"
 import EditForm from '../Components/EditForm'
 import Button from '@material-ui/core/Button'
@@ -19,14 +19,19 @@ function EditScreen(props) {
     
     
     const { index } = useParams();
-    const questions  = Database.surveys[index].elements;
+    var questions  = Database.surveys[index].elements;
     
+    var refquestion = useRef(questions); 
+
         return (
             <div>
+                <div>
+                    <h2>Edit Survey</h2>
+                </div>
                 <div className="question-form">
                     <br />
                     <div className="section">
-                        <EditForm dataSrc={questions}/>
+                        <EditForm dataSrc={refquestion}/>
                     </div>
                     <div className="save-btn">
                         <Button type='submit' variant="contained" style={btnstyle} fullWidth>Save Changes</Button>

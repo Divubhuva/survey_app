@@ -95,7 +95,7 @@ function questionsUI() {
 
 
                                         <Select
-                                        defaultValue="text" 
+                                        defaultValue= {ques.questionType}
                                         className="select" 
                                         style={{color: "#5f6368", fontSize: "15px"}}
                                         >
