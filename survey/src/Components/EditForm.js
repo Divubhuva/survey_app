@@ -32,25 +32,25 @@ function addQuestionType(index, type) {
     setQuestions(qs)
 }
 
-function optionChangeHandler(text, index, j) {
+function optionChangeHandler(text, index, OptionIndex) {
     var optionsQuestion = [...questions]
-    optionsQuestion[index].options[j].optionText = text;
+    optionsQuestion[index].options[OptionIndex] = text;
     setQuestions(optionsQuestion)
     console.log(optionsQuestion)
 }
 
-function removeOption(index, j){
+function removeOption(index, OptionIndex){
     var removeOptionQuestion = [...questions]
-    if(removeOptionQuestion[index].options.length > 1) {
-        removeOptionQuestion[index].options.splice(j, 1)
+    if ( removeOptionQuestion[index].options.length > 1) {
+        removeOptionQuestion[index].options.splice(OptionIndex,1)
         setQuestions(removeOptionQuestion)
-        console.log(index + "__" + j)
+        console.log(index + "__" + OptionIndex)
     }
 }
 
 function addOption(index){
     var optionsOfQuestion = [...questions];
-    optionsOfQuestion[index].options.push({optionText: "Text " + (optionsOfQuestion[index].options.length + 1)})
+    optionsOfQuestion[index].options.push("Text " + (optionsOfQuestion[index].options.length + 1))
     console.log(optionsOfQuestion);
     setQuestions(optionsOfQuestion)
   }
@@ -64,7 +64,7 @@ function deleteQuestion(index){
   }
 
 function addMoreQuestionField(){
-    setQuestions(questions=> [...questions, {questionText: "Type Question", questionType:"radio", options : [{optionText: "Text 1"}], open: true }]);
+    setQuestions(questions=> [...questions, {questionText: "Type Question", questionType:"Paragraph", options : ["Text 1"]}]);
 }
 
 function questionsUI() {
@@ -77,16 +77,23 @@ function questionsUI() {
                                     
                                     <div className="add-question-top">
                                         
-                                        <input type="text" className="question" placeholder="Question" value={ques.questionText} onChange={(e)=>{questionChangeHandler(e.target.value, index)}}></input>
+                                        <input 
+                                        type="text" 
+                                        className="question" 
+                                        placeholder="Question" 
+                                        value={ques.questionText} 
+                                        onChange={(e)=>{questionChangeHandler(e.target.value, index)}}>
+
+                                        </input>
                                         
                                         <Select
-                                        defaultValue="Paragraph" 
+                                        defaultValue="text" 
                                         className="select" 
                                         style={{color: "#5f6368", fontSize: "15px"}}
                                         >
                                             <MenuItem 
                                            
-                                            value="Paragraph" 
+                                            value="text" 
                                             onClick={()=>{addQuestionType(index, "text")}
                                             }>
                                                 <SubjectIcon style={{marginRight:"10px"}} />
@@ -95,7 +102,7 @@ function questionsUI() {
                                             
                                             <MenuItem 
                                             
-                                            value="Checkboxes" 
+                                            value="checkbox" 
                                             onClick={()=>{addQuestionType(index, "checkbox")}}>
                                             <CheckBoxIcon style={{marginRight:"10px", color: "#70757a"}} checked />
                                                 Checkboxes
@@ -103,8 +110,8 @@ function questionsUI() {
                                             
                                             <MenuItem 
                                             
-                                            value="Multiple Choice" 
-                                            onClick={()=>{addQuestionType(index, "radio")}}>
+                                            value="dropdown" 
+                                            onClick={()=>{addQuestionType(index, "dropdown")}}>
                                             <Radio style={{marginRight:"0px", color: "#70757a"}} checked />
                                                 Multiple Choice
                                             </MenuItem>

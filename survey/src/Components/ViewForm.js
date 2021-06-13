@@ -1,11 +1,12 @@
 import React from 'react'
+
+
+
+import TextField from '@material-ui/core/TextField';
 import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import ShortTextIcon from '@material-ui/icons/ShortText'
-import TextField from '@material-ui/core/TextField';
-
 import { makeStyles } from "@material-ui/core/styles";
+import ElementFactory from './ElementsFactory'
 
 const useStyles = makeStyles({
   underline: {
@@ -32,22 +33,23 @@ function ViewForm(props) {
                                         <AccordionDetails className="add-question">
                                             
                                             <div className="add-question-top">
-                                                
                                                 <TextField 
                                                 type="text" 
-                                                
                                                 className="question" 
                                                 InputProps={{
                                                     readOnly: true,
-                                                    
-                                                  }}
-                                                value={ques.questionText}
+                                                    classes
+                                                }}
+                                                value={ "Question. "+ ques.questionText}
                                                  ></TextField> 
                                             </div>
+
+                                            <ElementFactory questionType={ques.questionType}  options={ques.options} /> 
+                                                
+                                                
         
-        
-                                            {ques.options.map((op, j) => 
-                                            <div className="add-question-body" key={j}>
+                                            {/* {ques.options.map((OptionText, optionIndex) => 
+                                            <div className="add-question-body" key={optionIndex}>
                                                 {
                                                     (ques.questionType !== "text") ?
                                                     <input type={ques.questionType} style={{marginRight:"10px"}} /> :
@@ -60,12 +62,12 @@ function ViewForm(props) {
                                                         readOnly: true,
                                                         classes
                                                       }}
-                                                    value={ques.options[j].optionText}>
+                                                    value={ques.options[optionIndex]}>
                                                     </TextField>
                                                 </div>
                                             </div>
-                                            )}
-                                                <div className="add-question-body">
+                                            )} */}
+                                                {/* <div className="add-question-body">
                                                     <FormControlLabel disabled control = {
                                                         (ques.questionType!=="text") ?
                                                         <input type={ques.questionType} color="primary" inputprops={{ 'aria-label': 'secondary checkbox' }}
@@ -73,7 +75,7 @@ function ViewForm(props) {
                                                         <ShortTextIcon style={{marginRight:"10px"}} />
                                                     } 
                                                     />
-                                                </div>
+                                                </div> */}
     
                                         </AccordionDetails>
                         </div>

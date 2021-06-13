@@ -10,9 +10,9 @@ function AddNewSurveyScreen() {
 let questions  = 
     [
         {   questionText: "Type Question" ,
-            questionType: "radio",
+            questionType: "text",
             options : [
-                {optionText: "Text 1"},
+                "Text 1"
             ],
         }
    ];

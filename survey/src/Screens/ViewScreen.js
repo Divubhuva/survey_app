@@ -11,6 +11,9 @@ function ViewScreen(props) {
     const questions  = Database.surveys[index].elements;
         return (
             <div>
+                <div>
+                    <h1>View Survey</h1>
+                </div>
                 <div className="question-form">
                     <br />
                     <div className="section">
