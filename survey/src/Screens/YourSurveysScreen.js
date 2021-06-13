@@ -35,9 +35,6 @@ const useStyles = makeStyles((theme) => ({
 function YourSurveysScreen() {
     const history = useHistory()
     const classes = useStyles();
-    
-    
-    console.log(JSON.parse(localStorage.getItem("DataBase")));
 
     const addSurvey = () => {
         const id = uuid()
