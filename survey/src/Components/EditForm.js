@@ -18,11 +18,7 @@ function EditForm(props) {
 
 const [questions, setQuestions] = useState( props.dataSrc);
 
-const btnstyle = { 
-                        margin:'2rem 0', 
-                        color: 'black', 
-                        width: '50%'
-                     }
+
 
 function questionChangeHandler(text, index) {
     var newQuestion = [...questions]
@@ -224,9 +220,7 @@ function questionsUI() {
                         </div>
                     </div>
                     {questionsUI()}
-                    <div className="save-btn">
-                        <Button type='submit' variant="contained" style={btnstyle} fullWidth>Save</Button>
-                        </div>
+                    
                 </div>
             </div>
         </div>

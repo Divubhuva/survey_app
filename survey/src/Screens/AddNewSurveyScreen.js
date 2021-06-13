@@ -4,9 +4,17 @@ import IconButton from '@material-ui/core/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import ViewForm from '../Components/ViewForm';
-
+import Button from '@material-ui/core/Button'
 
 function AddNewSurveyScreen() {
+
+    const btnstyle = { 
+        margin:'2rem 0', 
+        color: 'black', 
+        width: '50%'
+     }
+
+
     var  questions  = 
     [
         {   questionText: "Type Question" ,
@@ -54,7 +62,12 @@ function AddNewSurveyScreen() {
                 </div>
                 
             </div>
+            <div className="save-btn">
+                    <Button type='submit' variant="contained" style={btnstyle} fullWidth>Save Survey</Button>
+            </div>
         </div>
+
+        
     )   
 }
 
