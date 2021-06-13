@@ -1,3 +1,7 @@
+.content {
+  font-family: "Times New Roman', Times, serif";
+}
+
 .title img{
   height: 30px;
 }
@@ -13,6 +17,15 @@
 
 .your-surveys {
   font-weight: bold;
+}
+
+.h1 {
+  width: 30%;
+  
+}
+
+.survey-list{
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .addSurBtn {

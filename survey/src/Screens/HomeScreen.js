@@ -6,13 +6,15 @@ function HomeScreen() {
     const paperStyle = { 
                            padding :20, 
                            height:'40vh',
-                           width:280,
+                           width: '30%',
                            margin:"10rem auto",
+                           fontFamily: ['Times New Roman', 'Times', 'serif'],
                         }
                         
     const btnstyle = { 
                         margin:'2rem 0', 
                         color: 'black', 
+                        fontFamily: ['Times New Roman', 'Times', 'serif'],
                      }
     return(
         <Grid>
@@ -20,9 +22,9 @@ function HomeScreen() {
                 <Grid align='center'>
                     <h2>Login</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' fullWidth required/>
-                <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
-                <Button type='submit' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                <TextField label='Username' placeholder='Enter username' value="Admin"fullWidth required/>
+                <TextField label='Password' placeholder='Enter password' type='password' value="Admin" fullWidth required />
+                <Button type='submit' variant="contained" style={btnstyle} fullWidth>Login</Button>
             </Paper>
         </Grid>
     )

@@ -7,7 +7,7 @@ import ViewForm from '../Components/ViewForm';
 
 
 function AddNewSurveyScreen() {
-let questions  = 
+    var  questions  = 
     [
         {   questionText: "Type Question" ,
             questionType: "text",
@@ -22,22 +22,22 @@ let questions  =
     return (
         
         <div>
-            <div>
-                <h1>Add New Surver</h1>
-                
+            <div className="addNewSurvey">
+                <h1>Add New Survey</h1>
                     {
                         openPreview ?
                          <IconButton 
-                         edge="start" 
-                         aria-label="view" 
-                         
-                         onClick={()=>{setOpenPreview(false)}}>
-                         <VisibilityOffIcon  />
-                                 </IconButton>
+                            edge="start" 
+                            aria-label="view" 
+                            onClick={()=>{setOpenPreview(false)}}>
+                            <VisibilityOffIcon  />
+                        </IconButton>
                          :
-                         <IconButton edge="end" aria-label="view" 
-                         onClick={()=>{setOpenPreview(true)}}>
-                          <VisibilityIcon  />
+                         <IconButton 
+                            edge="end" 
+                            aria-label="view" 
+                            onClick={()=>{setOpenPreview(true)}}>
+                            <VisibilityIcon  />
                          </IconButton>
                     }
             </div>

@@ -6,17 +6,25 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import SubjectIcon from '@material-ui/icons/Subject'
 import CheckBoxIcon from '@material-ui/icons/CheckBox'
-import Radio from '@material-ui/core/Radio'
+import TextField from '@material-ui/core/TextField';
 import ShortTextIcon from '@material-ui/icons/ShortText'
 import { IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import { BsTrash } from 'react-icons/bs'
 import Button from '@material-ui/core/Button'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
+import ElementIconFactory from './ElementIconFactory'
+import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 
 function EditForm(props) {
 
 const [questions, setQuestions] = useState( props.dataSrc);
+
+const btnstyle = { 
+                        margin:'2rem 0', 
+                        color: 'black', 
+                        width: '50%'
+                     }
 
 function questionChangeHandler(text, index) {
     var newQuestion = [...questions]
@@ -64,28 +72,30 @@ function deleteQuestion(index){
   }
 
 function addMoreQuestionField(){
-    setQuestions(questions=> [...questions, {questionText: "Type Question", questionType:"Paragraph", options : ["Text 1"]}]);
+    setQuestions(questions=> [...questions, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
 }
+
+
 
 function questionsUI() {
     return questions.map((ques, index) => (
         <div key={index}>
-            <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}>
-
+            {/* <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}> */}
                 <div className="question-boxes">
                                 <AccordionDetails className="add-question">
                                     
                                     <div className="add-question-top">
                                         
-                                        <input 
+                                        <TextField 
                                         type="text" 
                                         className="question" 
                                         placeholder="Question" 
                                         value={ques.questionText} 
                                         onChange={(e)=>{questionChangeHandler(e.target.value, index)}}>
-
-                                        </input>
+                                        </TextField>
                                         
+
+
                                         <Select
                                         defaultValue="text" 
                                         className="select" 
@@ -109,48 +119,65 @@ function questionsUI() {
                                             </MenuItem>
                                             
                                             <MenuItem 
-                                            
                                             value="dropdown" 
                                             onClick={()=>{addQuestionType(index, "dropdown")}}>
-                                            <Radio style={{marginRight:"0px", color: "#70757a"}} checked />
-                                                Multiple Choice
+                                            <ArrowDropDownCircleIcon style={{marginRight:"10px", color: "#70757a"}} checked />
+                                                Dropdown
                                             </MenuItem>
                                         </Select>
                                     </div>
 
 
-                                    {ques.options.map((op, j) => 
-                                    <div className="add-question-body" key={j}>
+                                    {ques.options.map((OptionText, optionIndex) => 
+                                    <div 
+                                    className="add-question-body" 
+                                    key={optionIndex}>
                                         {
-                                            (ques.questionType !== "text") ?
-                                            <input type={ques.questionType} style={{marginRight:"10px"}} /> :
-                                            <ShortTextIcon style={{marginRight:"10px"}} />
+                                            // (ques.questionType !== "text") ?
+                                            // <input type={ques.questionType} style={{marginRight:"10px"}} /> :
+                                            // <ShortTextIcon style={{marginRight:"10px"}} />
                                         }
+                                        <ElementIconFactory questionType={ques.questionType} />
                                         <div>
-                                            <input type="text" className="text-input" placeholder="Text" value={ques.options[j].optionText} onChange={(e)=>{optionChangeHandler(e.target.value, index, j)}}></input>
+                                            <input 
+                                            type="text" 
+                                            className="text-input" 
+                                            placeholder="Text" 
+                                            value={ques.options[optionIndex]} 
+                                            onChange={(e)=>{optionChangeHandler(e.target.value, index, optionIndex)}}>
+
+                                            </input>
                                         </div>
 
                                        
-                                        <IconButton aria-label="delete" onClick={()=>{removeOption(index, j)}}>
+                                        <IconButton 
+                                        aria-label="delete" 
+                                        onClick={()=>{removeOption(index, optionIndex)}}
+                                        >
                                             <CloseIcon  />
                                         </IconButton>
                                     </div>
                                     )}
                                         <div className="add-question-body">
-                                            <FormControlLabel disabled control = {
-                                                (ques.questionType!=="text") ?
-                                                <input 
-                                                type={ques.questionType} 
-                                                color="primary" 
-                                                inputprops={{ 'aria-label': 'secondary checkbox' }}
-                                                style={{marginLeft:"10px", marginRight:"10px"}} 
-                                                disabled /> 
-                                                :
+                                            <FormControlLabel disabled control = 
+                                            // {
+                                            //     (ques.questionType!=="text") ?
+                                            //     <input 
+                                            //     type={ques.questionType} 
+                                            //     color="primary" 
+                                            //     inputprops={{ 'aria-label': 'secondary checkbox' }}
+                                            //     style={{marginLeft:"10px", marginRight:"10px"}} 
+                                            //     disabled /> 
+                                            //     :
 
-                                                <ShortTextIcon style={{marginRight:"10px"}} />
-                                            } label = {
+                                            //     <ShortTextIcon style={{marginRight:"10px"}} />
+                                            // } 
+                                            {
+                                                <ElementIconFactory questionType={ques.questionType}  disabled/>
+                                            }
+                                            label = {
                                                 <div>
-                                                    <input type="text" className="text-input" style={{fontSize:"20px", width:"100px"}} placeholder="Add other"></input>
+                                                    {/* <input type="text" className="text-input" style={{fontSize:"20px", width:"100px"}} placeholder="Add other"></input> */}
                                                     <Button onClick={()=>{addOption(index)}} size="small" style={{textTransform: 'none', color: "#4285f4", fontSize:"13px", fontWeight:"600"}}>Add Option</Button>
                                                 </div>
                                             }
@@ -166,12 +193,16 @@ function questionsUI() {
                                     </div>
                                 </AccordionDetails>
 
-
-                        <div className="question-edit">
-                            <AddCircleOutlineIcon onClick={addMoreQuestionField} className="edit" />
-                        </div>
+                        {
+                            ((questions.length-1) === index) ?
+                            <div className="question-edit">
+                               <AddCircleOutlineIcon onClick={addMoreQuestionField} className="edit" />
+                            </div>:null
+                            
+                        }
+                        
                 </div>
-            </Accordion>
+            {/* </Accordion> */}
         </div>
     )
     )
@@ -188,6 +219,9 @@ function questionsUI() {
                         </div>
                     </div>
                     {questionsUI()}
+                    <div className="save-btn">
+                        <Button type='submit' variant="contained" style={btnstyle} fullWidth>Save</Button>
+                        </div>
                 </div>
             </div>
         </div>

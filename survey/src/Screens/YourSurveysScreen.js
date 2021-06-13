@@ -21,17 +21,6 @@ const useStyles = makeStyles((theme) => ({
   
   const Database = JSON.parse(localStorage.getItem("DataBase"));
   
-//   function generate(element) {
-//     Database.surveys.map((value,index) => {
-//       return (
-//         React.cloneElement(element, {
-//           key: index,
-//         })
-//       )
-//     })
-// }
-
-
 function YourSurveysScreen() {
     const history = useHistory()
     const classes = useStyles();

@@ -28,7 +28,6 @@ function ViewForm(props) {
             return questions.map((ques, index) => (
                 <div key={index}>
                     <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}>
-        
                         <div className="question-boxes">
                                         <AccordionDetails className="add-question">
                                             

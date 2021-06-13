@@ -7,7 +7,7 @@ function UpdateProfileScreen() {
     const paperStyle = { 
                            padding :20, 
                            height:'40vh',
-                           width:280,
+                           width: '30%',
                            margin:"10rem auto",
                         }
                         

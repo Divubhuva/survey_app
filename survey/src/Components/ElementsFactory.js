@@ -8,7 +8,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 
 
-
 function getComponent(questionType, options) {
     
     switch(questionType) {
@@ -17,6 +16,7 @@ function getComponent(questionType, options) {
             return (<TextField 
             type="text"
              ></TextField>);
+
         case "checkbox":
           return(
             <FormGroup>
@@ -30,6 +30,7 @@ function getComponent(questionType, options) {
                 
             </FormGroup>  
           )
+
           case "dropdown":
           return(
             <Select>
@@ -49,8 +50,9 @@ function getComponent(questionType, options) {
 
 function ElementFactory(props) {
     return (
-        getComponent(props.questionType,props.options)
-          
+        getComponent(props.questionType,props.options) 
     )
 }
 export default ElementFactory;
+
+

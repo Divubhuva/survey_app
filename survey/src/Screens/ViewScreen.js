@@ -12,7 +12,7 @@ function ViewScreen(props) {
         return (
             <div>
                 <div>
-                    <h1>View Survey</h1>
+                    <h2>View Survey</h2>
                 </div>
                 <div className="question-form">
                     <br />

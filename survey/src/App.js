@@ -22,7 +22,7 @@ function App() {
           <div className="container">
             <header className="header">
               <Header />
-              <Switch>
+              <Switch className="content">
                   <Route path="/" exact={true} component={HomeScreen} />
                   <Route path="/login" component={HomeScreen} />
                   <Route path="/update" component={UpdateProfileScreen} />
