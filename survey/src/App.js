@@ -27,7 +27,7 @@ function App() {
                   <Route path="/login" component={HomeScreen} />
                   <Route path="/update" component={UpdateProfileScreen} />
                   <Route path="/yoursurveys" component={YourSurveysScreen} />
-                  <Route path="/addsurvey/:id"> <AddNewSurveyScreen /> </Route> 
+                  <Route path="/addsurvey/"> <AddNewSurveyScreen /> </Route> 
                   <Route path="/editsurvey/:index"> <EditScreen /> </Route>
                   <Route path="/viewsurvey/:index"> <ViewScreen /> </Route> 
               </Switch>

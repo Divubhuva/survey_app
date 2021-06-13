@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import uuid from 'react-uuid'
 import { useHistory } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -26,10 +25,9 @@ function YourSurveysScreen() {
     const classes = useStyles();
 
     const addSurvey = () => {
-        const id = uuid()
-        console.log(id)
-        history.push("/addsurvey/"+id)
+        history.push("/addsurvey/")
     }
+
 
     return (
         <div className="survey-list">
