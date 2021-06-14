@@ -6,8 +6,6 @@ import Link from '@material-ui/core/Link'
 import app_logo from '../Images/app_logo.png'
 
 function Header() {
-    const preventDefault = (e) => 
-    e.preventDefault();
 
     const style = {
         background: 'black',
@@ -19,7 +17,7 @@ function Header() {
             <AppBar position="static" style={style}>
                 <Toolbar>
                     <Typography variant="h6" className="title">
-                        <Link to="/login" onClick={preventDefault} color="secondary">
+                        <Link href="/yoursurveys">
                             <img src={app_logo} title="logo" alt="Logo" />
                         </Link>
                     </Typography>
