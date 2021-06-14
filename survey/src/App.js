@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
 import Header from './Components/Header';
-import HomeScreen from './Screens/HomeScreen';
+import LoginScreen from './Screens/LoginScreen';
 import UpdateProfileScreen from './Screens/UpdateProfileScreen';
 import YourSurveysScreen from './Screens/YourSurveysScreen'
 import AddNewSurveyScreen from './Screens/AddNewSurveyScreen';
@@ -10,6 +10,7 @@ import EditScreen from './Screens/EditScreen';
 import ViewScreen from './Screens/ViewScreen';
 
 function App() {
+  
   
   var isDataLoaded = localStorage.getItem('DataBase');
   if(!isDataLoaded) {
@@ -23,8 +24,8 @@ function App() {
             <header className="header">
               <Header />
               <Switch className="content">
-                  <Route path="/" exact={true} component={HomeScreen} />
-                  <Route path="/login" component={HomeScreen} />
+                  <Route path="/" exact={true} component={LoginScreen} />
+                  <Route path="/login" component={LoginScreen} />
                   <Route path="/update" component={UpdateProfileScreen} />
                   <Route path="/yoursurveys" component={YourSurveysScreen} />
                   <Route path="/addsurvey/"> <AddNewSurveyScreen /> </Route> 

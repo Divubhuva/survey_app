@@ -41,7 +41,7 @@ function EditScreen(props) {
                 </div>
                 <div className="question-form">
                     <br />
-                    <div className="section">
+                    <div>
                         <EditForm dataSrc={refsurvey}/>
                     </div>
                     <div className="save-btn">

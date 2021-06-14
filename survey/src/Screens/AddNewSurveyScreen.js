@@ -18,7 +18,7 @@ function AddNewSurveyScreen() {
 
     var  questions  = 
     [
-        {   questionText: "Type Question" ,
+        {   questionText: "" ,
             questionType: "text",
             options : [
                 "Text 1"
@@ -27,7 +27,7 @@ function AddNewSurveyScreen() {
    ];
 
    var newSurvery = {
-        name: "Survey Name",
+        name: "",
         elements : questions 
     }
    var refSurvey = useRef(newSurvery);
@@ -45,7 +45,7 @@ function AddNewSurveyScreen() {
     return (
         
         <div className="addNewSurvey">
-            <div className="Suyvey-top">
+            <div className="Survey-top">
                 <h1>Add New Survey</h1>
                     {
                         openPreview ?
@@ -67,7 +67,7 @@ function AddNewSurveyScreen() {
             
             <div className="question-form">
                 <br />
-                <div className="section">
+                <div>
                     {
                     openPreview ?
                     <ViewForm dataSrc={refSurvey}/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid,Paper, TextField, Button } from '@material-ui/core';
 
-function HomeScreen() {
+function LoginScreen() {
 
     const paperStyle = { 
                            padding :20, 
@@ -30,4 +30,4 @@ function HomeScreen() {
     )
 }
 
-export default HomeScreen
+export default LoginScreen
