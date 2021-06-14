@@ -1,0 +1,59 @@
+{
+    "surveys": [
+     {
+      "name": " My First Survey",
+      "elements": [
+       {
+        "questionType": "text",
+        "questionText": "question1"
+       },
+       {
+        "questionType": "checkbox",
+        "questionText": "question2",
+        "options": [
+         "item1",
+         "item2",
+         "item3"
+        ]
+       },
+       {
+        "questionType": "dropdown",
+        "questionText": "question3",
+        "options": [
+         "item1",
+         "item2",
+         "item3"
+        ]
+       }
+      ]
+     },
+     {
+      "name": " My Second Survey",
+      "elements": [
+       {
+        "questionType": "text",
+        "questionText": "question1"
+       },
+       {
+        "questionType": "checkbox",
+        "questionText": "question2",
+        "options": [
+         "item1",
+         "item2",
+         "item3"
+        ]
+       },
+       {
+        "questionType": "dropdown",
+        "questionText": "question3",
+        "options": [
+         "item1",
+         "item2",
+         "item3"
+        ]
+       }
+      ]
+     }
+    ]
+}
+   
