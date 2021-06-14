@@ -6,7 +6,7 @@ function HomeScreen() {
     const paperStyle = { 
                            padding :20, 
                            height:'40vh',
-                           width: '30%',
+                           width: '60%',
                            margin:"10rem auto",
                            fontFamily: ['Times New Roman', 'Times', 'serif'],
                         }
