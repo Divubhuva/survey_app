@@ -1,3 +1,22 @@
+@media screen and (max-width: 959px) {
+  .container{
+    width:100%;
+  }
+}
+
+/* For Ipad, tablet */
+@media screen and (max-width: 640px) {
+  .container{
+    width:640px;
+  }
+}
+
+/* For Phone*/
+@media screen and (max-width: 320px) {
+  .container{
+    width:320px;
+  }
+}
 .content {
   font-family: "Times New Roman', Times, serif";
 }
@@ -28,6 +47,12 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
+.addNewSurvey{
+  background-color: #F4F4F9;
+  border-radius: 10px;
+  height: 100%;
+}
+
 .addSurBtn {
   color: Gray;
   font-weight: bold;
@@ -36,20 +61,27 @@
 .question-form {
   background-color: #F4F4F9;
   height: 100%;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 
 .section {
+  width: 90%;
+  height: 100%;
+  background-color: #e6e6e9 ;
+  border-bottom: 8px solid gray;
+  border-radius: 8px;
+  padding: 20px 25px;
+  width: 90%; 
   margin: auto;
-  width: 70%;
 }
 
 .question-form-header {
-  background-color: white;
-  border-top: 8px solid gray;
+  background-color: #F4F4F9 ;
+  border-bottom: 5px solid rgb(85, 85, 85);
   border-radius: 8px;
   padding: 30px 25px;
-  text-transform: capitalize;
+  width: 90%; 
+  margin: auto;
 }
 
 .survey-title {
@@ -59,30 +91,32 @@
   font-weight: 400;
   line-height: 40px;
   width: 100%;
-  border: none;
+  border: rgb(85, 85, 85);
   outline: none;
   border-bottom: 1px solid #F4F4F9;
   color: black;
   height:35px;
 }
 
-.question-boxes {
+.question-boxes{
+  background-color:#F4F4F9 ;
+  border-radius: 8px;
+  padding: 30px 25px;
   display: flex;
+  width: 90%;
   flex-direction: row;
   justify-content: center;
-  border-bottom: 2px solid gray;
+  margin: auto;
+  border-bottom: 5px solid rgb(85, 85, 85);
+  border-color: rgb(85, 85, 85);
 }
 
 .add-question {
   background-color: white;
   border-radius: 8px;
-  padding: 25px 22px;
-  text-transform: capitalize;
   display: flex;
   flex-direction: column;
-  padding-top: 0px;
   width: 93%;
-  margin-left: 10px;
 }
 
 .add-question-top {
@@ -111,11 +145,12 @@
 .question:focus {
   border-bottom: 1px solid gray;
   background-color: #F4F4F9;
+  width: 150%;
 }
 
 .select {
   height: 40px;
-  width: 230px;
+  width: 70px;
   border: 0.5px solid;
   color: black;
   margin-left: 10px;
@@ -138,12 +173,12 @@
   outline: none;
   border: none;
   height: 40px;
-  width: 490px;
+  width: 100%;
   font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.2px;
-  color: #202124;
+  color: #242024;
 }
 
 .text-input:focus {
@@ -157,25 +192,22 @@
 
 .add-question-bottom {
   margin-top: 12px;
-  border-top: 1px solid  rgb(78, 76, 76) ;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: #F4F4F9;
 }
 
-.add-border {
-  border-left: 6px solid gray;
-}
 
 .question-edit {
   background-color: #F4F4F9;
   display: flex;
   flex-direction: column;
+  margin: 0 12px  ;
   margin-right: 12px;
   margin-top: 10px;
   margin-bottom: 0px;
-  padding: 1px;
-  border-radius: 3px;
+  border-radius: 5px;
   height: 40px;
   width: 35px;
 }

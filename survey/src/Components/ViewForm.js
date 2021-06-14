@@ -89,7 +89,7 @@ function ViewForm(props) {
                                                      <div className="question-form-header">
                                                      <TextField 
                                                 type="text" 
-                                                className="question" 
+                                                className="survey-title" 
                                                 InputProps={{
                                                     readOnly: true
                                                     

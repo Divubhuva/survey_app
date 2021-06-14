@@ -38,7 +38,7 @@ function YourSurveysScreen() {
                 Add Survey
             </Button>
             <div className={classes.demo}>
-            <List >
+            <List className="display-surveys">
               { Database.surveys.map((value,index)=> {
 
                 return (

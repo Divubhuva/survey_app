@@ -31,7 +31,7 @@ function EditScreen(props) {
         Database.surveys[index] = refsurvey.current;
         const stringData = JSON.stringify(Database);
         localStorage.setItem("DataBase",stringData);
-       
+        
     }
 
         return (
