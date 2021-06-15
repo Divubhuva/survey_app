@@ -16,21 +16,19 @@ function Settings() {
     return (
         <div className="settingsIcons">
              <IconButton 
-                      edge="end" 
-                      aria-label="view"
-                      href={"/update"}
-                      >
-                        <AccountCircleIcon  style={{ fill: '#FCB214' }}/>
-                      </IconButton>
+                edge="end" 
+                aria-label="view"
+                href={"/update"}>
+                  <AccountCircleIcon  style={{ fill: '#FCB214' }}/>
+              </IconButton>
 
 
-                      <IconButton 
-                      edge="end" 
-                      aria-label="view"
-                      onClick={()=>{logoutRequest()}}
-                      >
-                        <ExitToAppIcon style={{ fill: '#FCB214' }} />
-                      </IconButton>
+              <IconButton 
+                edge="end" 
+                aria-label="view"
+                onClick={()=>{logoutRequest()}}>
+                   <ExitToAppIcon style={{ fill: '#FCB214' }} />
+              </IconButton>
         </div>
     )
 }

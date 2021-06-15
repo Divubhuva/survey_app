@@ -8,8 +8,6 @@ import Settings from '../Components/Settings';
 function UpdateProfileScreen() {
 
     const history = useHistory();
-
-    
     const [firstname, setFirstName] = useState("");
     const [lastName, setLastNme] = useState("");
     const [message, setMessage] = useState("");
@@ -23,9 +21,7 @@ function UpdateProfileScreen() {
         else{
             updateUserInfo(_firstname,_lastName);
             setMessage("User Information updated.");
-        
         }
-        
     }
 
     const paperStyle = { 
@@ -39,7 +35,7 @@ function UpdateProfileScreen() {
                         margin:'3rem 0', 
                         color: 'black', 
                      }
-    return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
+    return !isUserLogin() ? <div> {history.push("/login/")} </div> : (
         <Grid>
             <Settings />
             <Paper elevation={10} style={paperStyle}>
@@ -47,9 +43,29 @@ function UpdateProfileScreen() {
                     <h2>Update Your Profile</h2>
                 </Grid>
                 <p>{message}</p>
-                <TextField label='Firstname' placeholder='First Name' value = {firstname}  onChange={(e)=>{setFirstName(e.target.value)}} fullWidth required/>
-                <TextField label='Lastname' placeholder='Last Name' value = {lastName}  onChange={(e)=>{setLastNme(e.target.value)}} fullWidth required/>
-                <Button onClick={()=>{requestToUpdate(firstname,lastName)}} type='submit' variant="contained" style={btnstyle} fullWidth>Update</Button>
+
+                <TextField 
+                    label='Firstname' 
+                    placeholder='First Name' 
+                    value = {firstname}  
+                    onChange={(e)=>{setFirstName(e.target.value)}} 
+                    fullWidth required/>
+
+                <TextField 
+                    label='Lastname' 
+                    placeholder='Last Name' 
+                    value = {lastName}  
+                    onChange={(e)=>{setLastNme(e.target.value)}} 
+                    fullWidth required/>
+
+                <Button 
+                    onClick={()=>{requestToUpdate(firstname,lastName)}} 
+                    type='submit' 
+                    variant="contained" s
+                    tyle={btnstyle} 
+                    fullWidth>
+                        Update
+                </Button>
             </Paper>
         </Grid>
     )

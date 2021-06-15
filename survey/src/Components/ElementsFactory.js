@@ -11,42 +11,39 @@ import Checkbox from '@material-ui/core/Checkbox';
 function getComponent(questionType, options) {
     
     switch(questionType) {
-       
         case "text":
-            return (<TextField 
-            type="text"
-             ></TextField>);
-
+          return (<TextField 
+                      type="text">
+                  </TextField>);
         case "checkbox":
-          return(
-            <FormGroup>
-                {  options.map((value)=> {
-                    return (
-                        <FormControlLabel
-                    control={<Checkbox />}
-                    label={value}
-                    />)
-                })}
-                
-            </FormGroup>  
-          )
-
-          case "dropdown":
+          return( <FormGroup>
+                        { options.map((value)=> {
+                            return (
+                                <FormControlLabel
+                                    control={<Checkbox />}
+                                    label={value}
+                                />
+                            )
+                        })} 
+                    </FormGroup>  
+                )
+       case "dropdown":
           return(
             <Select>
-                {  options.map((optionText)=> {
+                { options.map((optionText)=> {
                     return (
-                        <MenuItem value={optionText}>{optionText}</MenuItem>
+                        <MenuItem value={optionText}>
+                            {optionText}
+                        </MenuItem>
                     )
-                })}
-                
+                })}  
             </Select>  
           )
         default:
             return (<TextField 
-                type="text"
-                 ></TextField>);
-      }
+                        type="text">
+                 </TextField>);
+    }
 }
 
 

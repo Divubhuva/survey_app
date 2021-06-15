@@ -10,6 +10,8 @@ import { useHistory } from 'react-router-dom';
 import Settings from '../Components/Settings';
 
 function AddNewSurveyScreen() {
+
+    const [openPreview, setOpenPreview] = useState(false);
     const history = useHistory();
     const btnstyle = { 
         margin:'2rem 0', 
@@ -34,8 +36,6 @@ function AddNewSurveyScreen() {
     }
    var refSurvey = useRef(newSurvery);
    
-   const [openPreview, setOpenPreview] = useState(false);
-
    function saveSurvey(){
     var data = localStorage.getItem("DataBase");
     var Database = JSON.parse(data);   
@@ -81,7 +81,13 @@ function AddNewSurveyScreen() {
                 
             </div>
             <div className="save-btn">
-                    <Button onClick={saveSurvey} type='submit' variant="contained" style={btnstyle} fullWidth>Save Survey</Button>
+                    <Button onClick={saveSurvey} 
+                            type='submit' 
+                            variant="contained" 
+                            style={btnstyle} 
+                            fullWidth>
+                                Save Survey
+                    </Button>
             </div>
         </div>
 

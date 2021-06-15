@@ -13,8 +13,6 @@ function Header() {
         size: 10,
     }
 
-
-
     return (
         <div className="title">
             <AppBar position="static" style={style}>
@@ -23,13 +21,10 @@ function Header() {
                         <Link href="/yoursurveys">
                             <img src={app_logo} title="logo" alt="Logo" />
                         </Link>
-
-
-                       
                     </Typography>
                 </Toolbar>
-        </AppBar>
-    </div>
+          </AppBar>
+        </div>
     )
 }
 

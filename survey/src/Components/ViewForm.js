@@ -1,7 +1,4 @@
 import React from 'react'
-
-
-
 import TextField from '@material-ui/core/TextField';
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,89 +17,49 @@ const useStyles = makeStyles({
 
 function ViewForm(props) {
     const classes = useStyles();
-    //const questions  = props.dataSrc.current;
-
    
-        function questionsUI() {
-            return props.dataSrc.current.elements.map((ques, index) => (
-                <div key={index}>
-                    {/* <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}> */}
-                        <div className="question-boxes">
-                                        <AccordionDetails className="add-question">
-                                            
-                                            <div className="add-question-top">
-                                                <TextField 
-                                                type="text" 
-                                                className="question" 
-                                                InputProps={{
-                                                    readOnly: true,
-                                                    classes
-                                                }}
-                                                value={ "Question. "+ ques.questionText}
-                                                 ></TextField> 
-                                            </div>
-
-                                            <ElementFactory questionType={ques.questionType}  options={ques.options} /> 
-                                                
-                                                
-        
-                                            {/* {ques.options.map((OptionText, optionIndex) => 
-                                            <div className="add-question-body" key={optionIndex}>
-                                                {
-                                                    (ques.questionType !== "text") ?
-                                                    <input type={ques.questionType} style={{marginRight:"10px"}} /> :
-                                                    <ShortTextIcon style={{marginRight:"10px"}} />
-                                                }
-                                                <div>
-                                                    <TextField 
-                                                    type="text"  
-                                                    InputProps={{
-                                                        readOnly: true,
-                                                        classes
-                                                      }}
-                                                    value={ques.options[optionIndex]}>
-                                                    </TextField>
-                                                </div>
-                                            </div>
-                                            )} */}
-                                                {/* <div className="add-question-body">
-                                                    <FormControlLabel disabled control = {
-                                                        (ques.questionType!=="text") ?
-                                                        <input type={ques.questionType} color="primary" inputprops={{ 'aria-label': 'secondary checkbox' }}
-                                                        style={{marginLeft:"10px", marginRight:"10px"}} disabled /> :
-                                                        <ShortTextIcon style={{marginRight:"10px"}} />
-                                                    } 
-                                                    />
-                                                </div> */}
-    
-                                        </AccordionDetails>
+    function questionsUI() {
+        return props.dataSrc.current.elements.map((ques, index) => (
+            <div key={index}>
+                <div className="question-boxes">
+                    <AccordionDetails className="add-question">
+                        <div className="add-question-top">
+                            <TextField 
+                                type="text" 
+                                className="question" 
+                                InputProps={{
+                                    readOnly: true,
+                                    classes
+                                }}
+                                value={ ques.questionText}>
+                            </TextField> 
                         </div>
-                    {/* </Accordion> */}
+                        <ElementFactory questionType={ques.questionType}  options={ques.options} /> 
+                    </AccordionDetails>
                 </div>
+            </div>
             ))
         };
 
-        return (
-           
+    return (
         <div className="section">
-                                                 <div className="question-title-section">
-                                                     <div className="question-form-header">
-                                                     <TextField 
-                                                type="text" 
-                                                className="survey-title" 
-                                                InputProps={{
-                                                    readOnly: true
-                                                    
-                                                }}
-                                                value={props.dataSrc.current.name }
-                                                 ></TextField> 
-                                                         
-                                                     </div>
-                                                 </div>
-                                                 {questionsUI()}
+            <div className="question-title-section">
+                <div className="question-form-header">
+                <TextField 
+                    type="text" 
+                    className="survey-title" 
+                    InputProps={{
+                        readOnly: true
+                        
+                    }}
+                    value={props.dataSrc.current.name }>
+                </TextField>   
+                </div>
+            </div>
+            {questionsUI()}
                                                  
-                                             </div>
-            );
+        </div>
+    );
     
 };
 

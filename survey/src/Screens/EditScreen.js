@@ -7,10 +7,6 @@ import Settings from '../Components/Settings';
 
 function EditScreen(props) {
     
-    
-    
-
-
     const btnstyle = { 
         margin:'2rem 0', 
         color: 'black', 
@@ -18,13 +14,9 @@ function EditScreen(props) {
      }
 
     const data = localStorage.getItem("DataBase");
-   
-    const Database = JSON.parse(data);
-    
-    
+    const Database = JSON.parse(data)
     const { index } = useParams();
     var survey  = Database.surveys[index];
-    
     var refsurvey = useRef(survey); 
 
     function saveChange( ){
@@ -36,24 +28,30 @@ function EditScreen(props) {
 
     const history = useHistory();
 
-        return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
+    return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
+        <div>
+            <Settings />
             <div>
-                <Settings />
+                <h2>Edit Survey</h2>
+            </div>
+            <div className="question-form">
+                <br />
                 <div>
-                    <h2>Edit Survey</h2>
+                    <EditForm dataSrc={refsurvey}/>
                 </div>
-                <div className="question-form">
-                    <br />
-                    <div>
-                        <EditForm dataSrc={refsurvey}/>
-                    </div>
-                    <div className="save-btn">
-                        <Button onClick={saveChange}type='submit' variant="contained" style={btnstyle} fullWidth>Save Changes</Button>
-                    </div>
+                <div className="save-btn">
+                    <Button onClick={saveChange}
+                        type='submit' 
+                        variant="contained" 
+                        style={btnstyle} 
+                        fullWidth>
+                            Save Changes
+                    </Button>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
+}
     
     export default EditScreen
     

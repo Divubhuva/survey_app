@@ -5,26 +5,32 @@ import { TextField } from '@material-ui/core';
 
 function getComponentIcon(questionType, IconDisable) {
     
-    switch(questionType) {
-       
+    switch(questionType) {  
         case "text":
-            //return (<ShortTextIcon style={{marginRight:"10px"}} />);
-            return (<TextField 
-            type="text" 
-            className="question" 
-            placeholder="Write Answer"/>);
-
+            return (
+                <TextField 
+                    type="text" 
+                    className="question" 
+                    placeholder="Write Answer"
+                />);
         case "checkbox":
+           return(
+                <input 
+                    type={questionType} 
+                    style={{marginRight:"10px"}} 
+                    disabled={IconDisable}
+                />)
+        case "dropdown":
           return(
-            <input type={questionType} style={{marginRight:"10px"}} disabled={IconDisable}/> 
-          )
-
-          case "dropdown":
-          return(<ArrowDropDownCircleIcon style={{marginRight:"10px"}} />);   
-          
+                <ArrowDropDownCircleIcon 
+                    style={{marginRight:"10px"}} 
+                />);   
         default:
-            return (<ShortTextIcon style={{marginRight:"10px"}} />);
-      }
+         return (
+                <ShortTextIcon 
+                    style={{marginRight:"10px"}} 
+                />);
+    }
 }
 
 function ElementIconFactory(props) {

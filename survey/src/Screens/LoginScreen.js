@@ -9,11 +9,9 @@ function LoginScreen() {
     const [username, setUsernam] = useState("admin");
     const [password, setPassword] = useState("admin");
     const [message, setMessage] = useState("");
+    const history = useHistory()
 
-    const history = useHistory();
-
-    const requestToLog =(username,password)=>{
-        
+    const requestToLog =(username,password)=>{   
         if(login(username,password)){
             setMessage("");
             history.push('/yoursurveys');
@@ -37,6 +35,7 @@ function LoginScreen() {
                         color: 'black', 
                         fontFamily: ['Times New Roman', 'Times', 'serif'],
                      }
+
     return isUserLogin() ? <div>{history.push("/yoursurveys/")}</div> : (
         <Grid>
             <Paper elevation={10} style={paperStyle} >
@@ -46,21 +45,29 @@ function LoginScreen() {
                 <p>{message}</p>
 
                 <TextField 
-                label='Username' 
-                placeholder='Enter username' 
-                type="text" value={username}
-                fullWidth required
-                onChange={(e)=>{setUsernam(e.target.value)}}
+                    label='Username' 
+                    placeholder='Enter username' 
+                    type="text" value={username}
+                    fullWidth required
+                    onChange={(e)=>{setUsernam(e.target.value)}}
                 />
+
                 <TextField 
-                label='Password'
-                 placeholder='Enter password' 
-                 type='password' 
-                 value={password} 
-                 fullWidth required 
-                 onChange={(e)=>{setPassword(e.target.value)}}
+                    label='Password'
+                    placeholder='Enter password' 
+                    type='password' 
+                    value={password} 
+                    fullWidth required 
+                    onChange={(e)=>{setPassword(e.target.value)}}
                  />
-                <Button onClick={()=>{requestToLog(username,password)}}type='submit' variant="contained" style={btnstyle} fullWidth>Login</Button>
+                 
+                <Button onClick={()=>{requestToLog(username,password)}} 
+                    type='submit' 
+                    variant="contained" 
+                    style={btnstyle} 
+                    fullWidth>
+                        Login
+                </Button>
             </Paper>
         </Grid>
     )

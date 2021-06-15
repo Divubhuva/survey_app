@@ -18,23 +18,20 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-  
-  const Database = JSON.parse(localStorage.getItem("DataBase"));
+const Database = JSON.parse(localStorage.getItem("DataBase"));
   
 function YourSurveysScreen() {
+
     const history = useHistory()
     const classes = useStyles();
-
     const addSurvey = () => {
         history.push("/addsurvey/")
     }
 
-
-
     return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
         <div className="survey-list">
-          <Settings />
-          <p className="userNameStyle">{getUserInfo()} </p>
+            <Settings />
+            <p className="userNameStyle">{getUserInfo()} </p>
             <h1 className="your-surveys">
                 Your Surveys
             </h1>
@@ -46,32 +43,31 @@ function YourSurveysScreen() {
                 { Database.surveys.map((value,index)=> {
 
                   return (
-                    
                   <ListItem className="List-view" key={index}>
-                    <ListItemText
-                      primary={value.name}
-                    />
+                      <ListItemText
+                        primary={value.name}
+                      />
 
-                    <ListItemSecondaryAction>
-                      <IconButton 
-                      className={classes.editIcon} 
-                      edge="start" 
-                      aria-label="edit"
-                      href={"/editsurvey/"+index}
-                      >
-                        <EditIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
+                      <ListItemSecondaryAction>
+                          <IconButton 
+                          className={classes.editIcon} 
+                          edge="start" 
+                          aria-label="edit"
+                          href={"/editsurvey/"+index}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                      </ListItemSecondaryAction>
 
-                    <ListItemSecondaryAction>
-                      <IconButton 
-                      edge="end" 
-                      aria-label="view"
-                      href={"/viewsurvey/"+index}
-                      >
-                        <VisibilityIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
+                      <ListItemSecondaryAction>
+                          <IconButton 
+                          edge="end" 
+                          aria-label="view"
+                          href={"/viewsurvey/"+index}
+                          >
+                            <VisibilityIcon />
+                          </IconButton>
+                      </ListItemSecondaryAction>
                   </ListItem> 
                 )})}
               </List>

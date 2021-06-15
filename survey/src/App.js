@@ -11,7 +11,6 @@ import ViewScreen from './Screens/ViewScreen';
 
 function App() {
   
-  
   var isDataLoaded = localStorage.getItem('DataBase');
   if(!isDataLoaded) {
     localStorage.setItem('DataBase', JSON.stringify(DummyData))

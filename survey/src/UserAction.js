@@ -1,14 +1,13 @@
-function login  (userName, password) { 
+function login (userName, password) { 
     if ((userName === "admin") &&(password === "admin")){
         localStorage.setItem("userLogin",JSON.stringify(true));
         return true;
-
     }
     return false;
 }
 
 
-const isUserLogin =()=>{
+const isUserLogin = () => {
     const loginInfo = JSON.parse(localStorage.getItem("userLogin"));
     if(loginInfo){
         return true;
@@ -17,7 +16,7 @@ const isUserLogin =()=>{
 }
 
 
-const logout =()=> {
+const logout = () => {
     localStorage.removeItem("userLogin");
 }
 
@@ -26,6 +25,7 @@ function updateUserInfo (firstName, lastName ) {
     localStorage.setItem("firstname",JSON.stringify(firstName))
     localStorage.setItem("lastName",JSON.stringify(lastName))
 }
+
 
 const getUserInfo = () => {
     const userInfoFirstName = JSON.parse(localStorage.getItem("firstname"));
