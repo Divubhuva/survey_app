@@ -22,7 +22,26 @@ const logout =()=> {
 }
 
 
+function updateUserInfo (firstName, lastName ) {
+    localStorage.setItem("firstname",JSON.stringify(firstName))
+    localStorage.setItem("lastName",JSON.stringify(lastName))
+}
+
+const getUserInfo = () => {
+    const userInfoFirstName = JSON.parse(localStorage.getItem("firstname"));
+    const userInfoLastName = JSON.parse(localStorage.getItem("lastName"));
+    
+    var ret = "Hello, ";
+    if ( userInfoFirstName !== null )
+    {
+        ret += userInfoFirstName;
+        ret += " ";  
+    }
+    if(userInfoLastName !== null ){
+        ret += userInfoLastName; 
+    }
+    return ret
+}
 
 
-
-export {login, isUserLogin, logout}
+export {login, isUserLogin, logout, getUserInfo, updateUserInfo }

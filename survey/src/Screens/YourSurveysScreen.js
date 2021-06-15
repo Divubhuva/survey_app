@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import {isUserLogin} from '../UserAction'
+import {isUserLogin, getUserInfo} from '../UserAction'
 import Settings from '../Components/Settings';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +34,7 @@ function YourSurveysScreen() {
     return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
         <div className="survey-list">
           <Settings />
+          <p className="userNameStyle">{getUserInfo()} </p>
             <h1 className="your-surveys">
                 Your Surveys
             </h1>

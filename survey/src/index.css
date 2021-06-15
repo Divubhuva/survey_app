@@ -47,9 +47,14 @@
   font-weight: bold;
 }
 
+.userNameStyle{
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+}
+
 .h1 {
   width: 30%;
-  
 }
 
 .survey-list{
