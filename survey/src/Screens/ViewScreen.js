@@ -1,9 +1,11 @@
 import React,{useRef} from 'react'
-import  {useParams} from "react-router-dom"
+import  {useHistory, useParams} from "react-router-dom"
 import ViewForm from '../Components/ViewForm'
+import {isUserLogin} from '../UserAction'
+import Settings from '../Components/Settings'
 
 function ViewScreen(props) {
-    
+    const history = useHistory();
     const data = localStorage.getItem("DataBase");
     const Database = JSON.parse(data);
     const { index } = useParams();
@@ -11,8 +13,9 @@ function ViewScreen(props) {
     const survey  = Database.surveys[index];
 
     var refsurvey = useRef(survey); 
-        return (
+        return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
             <div>
+                <Settings />
                 <div>
                     <h2>View Survey</h2>
                 </div>

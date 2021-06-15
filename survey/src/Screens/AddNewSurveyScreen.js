@@ -5,10 +5,12 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import ViewForm from '../Components/ViewForm';
 import Button from '@material-ui/core/Button';
-
+import {isUserLogin} from '../UserAction'
+import { useHistory } from 'react-router-dom';
+import Settings from '../Components/Settings';
 
 function AddNewSurveyScreen() {
-    
+    const history = useHistory();
     const btnstyle = { 
         margin:'2rem 0', 
         color: 'black', 
@@ -42,9 +44,10 @@ function AddNewSurveyScreen() {
     localStorage.setItem("DataBase",stringData);
     
    }
-    return (
+    return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
         
         <div className="addNewSurvey">
+            <Settings />
             <div className="Survey-top">
                 <h1>Add New Survey</h1>
                     {

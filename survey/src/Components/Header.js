@@ -5,12 +5,15 @@ import Typography from "@material-ui/core/Typography";
 import Link from '@material-ui/core/Link'
 import app_logo from '../Images/app_logo.png'
 
+
 function Header() {
 
     const style = {
         background: 'black',
         size: 10,
     }
+
+
 
     return (
         <div className="title">
@@ -20,6 +23,9 @@ function Header() {
                         <Link href="/yoursurveys">
                             <img src={app_logo} title="logo" alt="Logo" />
                         </Link>
+
+
+                       
                     </Typography>
                 </Toolbar>
         </AppBar>

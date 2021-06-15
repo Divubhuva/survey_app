@@ -36,6 +36,13 @@
   margin-top: 50px;
 }
 
+.settingsIcons {
+  position: Absolute; 
+  top: 10px; 
+  right: 20px; 
+
+}
+
 .your-surveys {
   font-weight: bold;
 }

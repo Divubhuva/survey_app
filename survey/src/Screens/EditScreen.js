@@ -1,9 +1,9 @@
 import React,{useRef} from 'react'
-import  {useParams} from "react-router-dom"
+import  {useHistory, useParams} from "react-router-dom"
 import EditForm from '../Components/EditForm'
 import Button from '@material-ui/core/Button'
-
-
+import {isUserLogin} from '../UserAction'
+import Settings from '../Components/Settings';
 
 function EditScreen(props) {
     
@@ -34,8 +34,11 @@ function EditScreen(props) {
         
     }
 
-        return (
+    const history = useHistory();
+
+        return !isUserLogin() ? <div>{history.push("/login/")}</div> : (
             <div>
+                <Settings />
                 <div>
                     <h2>Edit Survey</h2>
                 </div>
