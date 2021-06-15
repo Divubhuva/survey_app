@@ -54,7 +54,7 @@ function AddNewSurveyScreen() {
                             aria-label="view" 
                             onClick={()=>{setOpenPreview(false)}}>
                             <VisibilityOffIcon  />
-                        </IconButton>
+                         </IconButton>
                          :
                          <IconButton 
                             edge="end" 

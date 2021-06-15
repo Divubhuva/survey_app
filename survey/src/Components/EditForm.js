@@ -13,6 +13,8 @@ import Button from '@material-ui/core/Button'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import ElementIconFactory from './ElementIconFactory'
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import DragIndicatorIcon from '@material-ui/icons/DragIndicator'
 
 function EditForm(props) {
 
@@ -72,12 +74,50 @@ function addMoreQuestionField(){
     setQuestions(props.dataSrc.current.elements=[...props.dataSrc.current.elements, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
 }
 
+function onDragEnd(result) {
+    if (!result.destination) {
+      return;
+    }
+    var itemgg = [...props.dataSrc.current.elements];
+    const itemF = reorder(
+      itemgg,
+      result.source.index,
+      result.destination.index
+    );
+    setQuestions(itemF);
+}
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+  return result;
+};
+
 
 
 function questionsUI() {
     
     return questions.map((ques, index) => (
-        <div key={index}>
+        <Draggable key={index} draggableId={index + 'id'} index={index}>
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <div>
+          <div style={{marginBottom: "0px"}}>
+            <div style={{width:'100%', marginBottom: '0px' }}>
+              <DragIndicatorIcon style={{transform: "rotate(-90deg)", color:'#DAE0E2',position:"relative",left:"300px"}} fontSize="small"/>
+            </div>
+
+            
+
+
+
+
+            <div key={index}>
             {/* <Accordion expanded = {questions[index].open} className={questions[index].open ? 'add-border' : ""}> */}
                 <div className="question-boxes">
                                 <AccordionDetails className="add-question">
@@ -209,6 +249,13 @@ function questionsUI() {
                 </div>
             {/* </Accordion> */}
         </div>
+
+
+              </div>
+          </div>
+        </div>
+          )}
+      </Draggable>
     )
     )
 }
@@ -226,14 +273,27 @@ function questionsUI() {
                             style={{color: "black"}} 
                             placeholder="Untitled survey"
                             defaultValue={props.dataSrc.current.name }
-                            onChange={(e)=>{props.dataSrc.current.name = e.target.value}}
-                            >
-
-                            </TextField>
-                            
+                            onChange={(e)=>{props.dataSrc.current.name = e.target.value}}>
+                            </TextField> 
                         </div>
                     </div>
-                    {questionsUI()}
+
+                    <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId="droppable">
+                        {(provided, snapshot) => (
+                        <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                        >
+                            {questionsUI()}
+
+                            {provided.placeholder}
+                        </div>
+                        )} 
+                    </Droppable>
+                </DragDropContext>
+
+                    {/* {questionsUI()} */}
                     
                 </div>
             </div>

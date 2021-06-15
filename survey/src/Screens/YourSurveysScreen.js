@@ -38,40 +38,43 @@ function YourSurveysScreen() {
                 Add Survey
             </Button>
             <div className={classes.demo}>
-            <List className="display-surveys">
-              { Database.surveys.map((value,index)=> {
+              <List className="display-surveys">
+                { Database.surveys.map((value,index)=> {
 
-                return (
-                  
-                <ListItem className="List-view" key={index}>
-                  <ListItemText
-                    primary={value.name}
-                  />
+                  return (
+                    
+                  <ListItem className="List-view" key={index}>
+                    <ListItemText
+                      primary={value.name}
+                    />
 
-                  <ListItemSecondaryAction>
-                    <IconButton 
-                    className={classes.editIcon} 
-                    edge="start" 
-                    aria-label="edit"
-                    href={"/editsurvey/"+index}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
+                    <ListItemSecondaryAction>
+                      <IconButton 
+                      className={classes.editIcon} 
+                      edge="start" 
+                      aria-label="edit"
+                      href={"/editsurvey/"+index}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
 
-                  <ListItemSecondaryAction>
-                    <IconButton 
-                    edge="end" 
-                    aria-label="view"
-                    href={"/viewsurvey/"+index}
-                    >
-                      <VisibilityIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem> 
-              )})}
-            </List>
-          </div>
+                    <ListItemSecondaryAction>
+                      <IconButton 
+                      edge="end" 
+                      aria-label="view"
+                      href={"/viewsurvey/"+index}
+                      >
+                        <VisibilityIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                  </ListItem> 
+                )})}
+              </List>
+           </div>
+           <Button className="logoutbtn" variant="contained" >
+                Log Out
+            </Button>
         </div>
     )
 }

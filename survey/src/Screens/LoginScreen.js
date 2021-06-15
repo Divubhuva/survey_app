@@ -1,7 +1,10 @@
 import React from 'react';
 import { Grid,Paper, TextField, Button } from '@material-ui/core';
+//import axios from 'axios'
 
 function LoginScreen() {
+
+
 
     const paperStyle = { 
                            padding :20, 
@@ -18,12 +21,12 @@ function LoginScreen() {
                      }
     return(
         <Grid>
-            <Paper elevation={10} style={paperStyle}>
+            <Paper elevation={10} style={paperStyle} >
                 <Grid align='center'>
                     <h2>Login</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' value="Admin"fullWidth required/>
-                <TextField label='Password' placeholder='Enter password' type='password' value="Admin" fullWidth required />
+                <TextField label='Username' placeholder='Enter username' type="text" value="{username}"  fullWidth required/>
+                <TextField label='Password' placeholder='Enter password' type='password' value="{password}" fullWidth required />
                 <Button type='submit' variant="contained" style={btnstyle} fullWidth>Login</Button>
             </Paper>
         </Grid>
