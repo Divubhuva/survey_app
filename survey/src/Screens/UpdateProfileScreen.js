@@ -15,10 +15,16 @@ function UpdateProfileScreen() {
     const [message, setMessage] = useState("");
 
 
-    const requestToUpdate = (firstname,lastName)=>{
+    const requestToUpdate = (_firstname,_lastName)=>{
         
-        updateUserInfo(firstname,lastName);
+        if((_firstname === "") || (_lastName === "")){
+            setMessage("Please enter information.");
+        }
+        else{
+            updateUserInfo(_firstname,_lastName);
             setMessage("User Information updated.");
+        
+        }
         
     }
 
