@@ -14,7 +14,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import ElementIconFactory from './ElementIconFactory'
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import DragIndicatorIcon from '@material-ui/icons/DragIndicator'
+
 
 function EditForm(props) {
 
@@ -108,9 +108,7 @@ function questionsUI() {
                     >
                       <div>
           <div style={{marginBottom: "0px"}}>
-            <div style={{width:'100%', marginBottom: '0px' }}>
-              <DragIndicatorIcon style={{transform: "rotate(-90deg)", color:'#DAE0E2',position:"relative",left:"300px"}} fontSize="small"/>
-            </div>
+            
 
             
 

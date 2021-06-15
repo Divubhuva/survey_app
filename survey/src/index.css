@@ -1,3 +1,4 @@
+/* For laptop  */
 @media screen and (max-width: 959px) {
   .container{
     width:100%;
@@ -7,16 +8,17 @@
 /* For Ipad, tablet */
 @media screen and (max-width: 640px) {
   .container{
-    width:640px;
+    width:100%;
   }
 }
 
 /* For Phone*/
-@media screen and (max-width: 320px) {
+@media (max-width: 320px) {
   .container{
-    width:320px;
+    width: 100%;
   }
 }
+
 .content {
   font-family: "Times New Roman', Times, serif";
 }
@@ -58,20 +60,22 @@
   font-weight: bold;
 }
 
+.logoutbtn {
+  color: gray;
+  font-weight: bold;
+}
+
 .question-form {
   background-color: #F4F4F9;
   height: 100%;
-  /* padding-bottom: 20px; */
 }
 
 .section {
-  width: 90%;
+  width: 80%;
   height: 100%;
   background-color: #e6e6e9 ;
-  /* border-bottom: 20px solid gray; */
   border-radius: 8px;
   padding: 20px 25px;
-  width: 90%; 
   margin: auto;
 }
 
