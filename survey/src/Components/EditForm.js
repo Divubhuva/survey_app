@@ -72,21 +72,18 @@ function onDragEnd(result) {
     if (!result.destination) {
         return;
       }
-      var dndList = [...props.dataSrc.current.elements];
       const item = reorder(
-        dndList,
         result.source.index,
         result.destination.index
       );
       setQuestions(item);
   }
   
-  const reorder = (list, startIndex, endIndex) => {
+  const reorder = ( startIndex, endIndex) => {
     var dndList = [...props.dataSrc.current.elements];
       const [removed] = dndList.splice(startIndex, 1);
       dndList.splice(endIndex, 0, removed);
-        props.dataSrc.current.elements = dndList;
-        setQuestions(dndList)
+      props.dataSrc.current.elements = dndList;
         return dndList;
   };
    

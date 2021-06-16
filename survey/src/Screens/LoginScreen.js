@@ -1,8 +1,7 @@
 import React,{useState} from 'react';
 import { Grid,Paper, TextField, Button } from '@material-ui/core';
-import {login} from '../UserAction'
+import {login, isUserLogin } from '../UserAction'
 import { useHistory } from 'react-router-dom';
-import {isUserLogin} from '../UserAction'
 
 function LoginScreen() {
 
@@ -60,7 +59,7 @@ function LoginScreen() {
                     fullWidth required 
                     onChange={(e)=>{setPassword(e.target.value)}}
                  />
-                 
+
                 <Button onClick={()=>{requestToLog(username,password)}} 
                     type='submit' 
                     variant="contained" 
