@@ -18,9 +18,11 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-const Database = JSON.parse(localStorage.getItem("DataBase"));
+
   
 function YourSurveysScreen() {
+
+    const Database = JSON.parse(localStorage.getItem("DataBase"));
 
     const history = useHistory()
     const classes = useStyles();
