@@ -141,7 +141,6 @@
 
 .question {
   box-sizing: border-box;
-  background-color: greenyellow;
   margin-top: 10px;
   margin-right: 10px;
   font-family: 'Times New Roman', Times, serif;
@@ -149,7 +148,6 @@
   font-weight: 400;
   flex: 1;
   color: black;
-  height: 40px;
   padding: 10px;
 }
 

@@ -14,10 +14,17 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import ElementIconFactory from './ElementIconFactory'
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles({
+    textarea: {
+        resize: "both"
+      }
+});
 
 function EditForm(props) {
 
+const classes = useStyles();
 const [questions, setQuestions] = useState( props.dataSrc.current.elements);
 
 function questionChangeHandler(text, index) {
@@ -64,7 +71,7 @@ function deleteQuestion(index){
   }
 
 function addMoreQuestionField(){
-    setQuestions(props.dataSrc.current.elements=[...props.dataSrc.current.elements, {questionText: "Type Question", questionType:"text", options : ["Text 1"],}]);
+    setQuestions(props.dataSrc.current.elements=[...props.dataSrc.current.elements, {placeholder: "Type Question", questionType:"text", options : ["Text 1"],}]);
 }
 
 function onDragEnd(result) {
@@ -108,6 +115,10 @@ function questionsUI() {
                                         type="text" 
                                         className="question" 
                                         placeholder="Question" 
+                                        multiline
+                                        InputProps={{
+                                            className: classes.textarea
+                                        }}
                                         value={ques.questionText} 
                                         onChange={(e)=>{questionChangeHandler(e.target.value, index)}}>
                                         </TextField>

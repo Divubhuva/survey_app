@@ -5,13 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import ElementFactory from './ElementsFactory'
 
 const useStyles = makeStyles({
+    textarea: {
+        resize: "both"
+      },
   underline: {
     "&&&:before": {
       borderBottom: "none"
     },
     "&&:after": {
       borderBottom: "none"
-    }
+    },
   }
 });
 
@@ -24,14 +27,16 @@ function ViewForm(props) {
                 <div className="question-boxes">
                     <AccordionDetails className="add-question">
                         <div className="add-question-top">
-                            <TextField 
+                            <TextField
                                 type="text" 
                                 className="question" 
+                                multiline
                                 InputProps={{
                                     readOnly: true,
-                                    classes
+                                    className: classes.textarea
                                 }}
-                                value={ ques.questionText}>
+                                value={ques.questionText}
+                                >
                             </TextField> 
                         </div>
                         <ElementFactory questionType={ques.questionType}  options={ques.options} /> 

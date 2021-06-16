@@ -28,9 +28,9 @@ function getComponentIcon(questionType, IconDisable) {
         default:
          return (
                 <ShortTextIcon 
-                    style={{marginRight:"10px"}} 
+                     style={{marginRight:"10px"}} 
                 />);
-    }
+      }
 }
 
 function ElementIconFactory(props) {
