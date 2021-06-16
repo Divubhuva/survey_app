@@ -1,18 +1,18 @@
 import React from 'react';
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import ShortTextIcon from '@material-ui/icons/ShortText'
-import { TextField } from '@material-ui/core';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 function getComponentIcon(questionType, IconDisable) {
     
+   
+
     switch(questionType) {  
         case "text":
-            return (
-                <TextField 
-                    type="text" 
-                    className="question" 
-                    placeholder="Write Answer"
-                />);
+            return (<TextareaAutosize 
+                aria-label="minimum height" 
+                rowsMin={3} 
+                placeholder="Answer" />);
         case "checkbox":
            return(
                 <input 

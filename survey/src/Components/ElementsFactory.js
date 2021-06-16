@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { FormGroup } from '@material-ui/core';
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -12,9 +13,10 @@ function getComponent(questionType, options) {
     
     switch(questionType) {
         case "text":
-          return (<TextField 
-                      type="text">
-                  </TextField>);
+          return (<TextareaAutosize 
+                        aria-label="minimum height" 
+                        rowsMin={3} 
+                        placeholder="Answer" />);
         case "checkbox":
           return( <FormGroup>
                         { options.map((value)=> {
