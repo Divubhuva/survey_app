@@ -11,6 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import {isUserLogin, getUserInfo} from '../UserAction'
 import Settings from '../Components/Settings';
+import { DATABASE_KEY } from '../ConstatantStrings'
 
 const useStyles = makeStyles((theme) => ({
     editIcon: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   
 function YourSurveysScreen() {
 
-    const Database = JSON.parse(localStorage.getItem("DataBase"));
+    const Database = JSON.parse(localStorage.getItem(DATABASE_KEY));
 
     const history = useHistory()
     const classes = useStyles();

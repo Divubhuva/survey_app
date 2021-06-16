@@ -1,0 +1,10 @@
+export const DATABASE_KEY = "DataBase";
+export const UPDATE_ERROR_MESSAGE = "Please enter information.";
+export const UPDATE_SUCCESSFUL =  "User Information updated.";
+export const USER_LOGIN_KEY = "userLogin";
+export const FIRSTNAME_KEY = "firstname";
+export const LASTNAME_KEY = "lastName";
+export const HELLO_MESSAGE = "Hello, ";
+export const DEFAULT_USERNAME = "admin";
+export const DEFAULT_PASSWORD = "admin";
+export const LOGIN_ERROR_MESSAGE = "Invalid Username or Password!!";

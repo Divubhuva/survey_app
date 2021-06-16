@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import {isUserLogin} from '../UserAction'
 import { useHistory } from 'react-router-dom';
 import Settings from '../Components/Settings';
+import { DATABASE_KEY } from '../ConstatantStrings'
 
 function AddNewSurveyScreen() {
 
@@ -37,11 +38,11 @@ function AddNewSurveyScreen() {
    var refSurvey = useRef(newSurvery);
    
    function saveSurvey(){
-    var data = localStorage.getItem("DataBase");
+    var data = localStorage.getItem(DATABASE_KEY);
     var Database = JSON.parse(data);   
     Database.surveys.push(refSurvey.current);
     const stringData = JSON.stringify(Database);
-    localStorage.setItem("DataBase",stringData);
+    localStorage.setItem(DATABASE_KEY,stringData);
     
    }
     return !isUserLogin() ? <div>{history.push("/login/")}</div> : (

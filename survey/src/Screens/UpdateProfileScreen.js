@@ -3,6 +3,7 @@ import { Grid, Paper, TextField, Button } from '@material-ui/core';
 import {isUserLogin, updateUserInfo} from '../UserAction'
 import { useHistory } from 'react-router-dom';
 import Settings from '../Components/Settings';
+import { UPDATE_ERROR_MESSAGE, UPDATE_SUCCESSFUL } from '../ConstatantStrings'
 
 
 function UpdateProfileScreen() {
@@ -16,11 +17,11 @@ function UpdateProfileScreen() {
     const requestToUpdate = (_firstname,_lastName)=>{
         
         if((_firstname === "") || (_lastName === "")){
-            setMessage("Please enter information.");
+            setMessage(UPDATE_ERROR_MESSAGE);
         }
         else{
             updateUserInfo(_firstname,_lastName);
-            setMessage("User Information updated.");
+            setMessage(UPDATE_SUCCESSFUL);
         }
     }
 

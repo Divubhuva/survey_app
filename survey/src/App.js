@@ -8,12 +8,13 @@ import AddNewSurveyScreen from './Screens/AddNewSurveyScreen';
 import DummyData from './Data.json'
 import EditScreen from './Screens/EditScreen';
 import ViewScreen from './Screens/ViewScreen';
+import { DATABASE_KEY } from './ConstatantStrings'
 
 function App() {
   
-  var isDataLoaded = localStorage.getItem('DataBase');
+  var isDataLoaded = localStorage.getItem(DATABASE_KEY);
   if(!isDataLoaded) {
-    localStorage.setItem('DataBase', JSON.stringify(DummyData))
+    localStorage.setItem(DATABASE_KEY, JSON.stringify(DummyData))
   }
   
   return (

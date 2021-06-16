@@ -4,6 +4,7 @@ import EditForm from '../Components/EditForm'
 import Button from '@material-ui/core/Button'
 import {isUserLogin} from '../UserAction'
 import Settings from '../Components/Settings';
+import { DATABASE_KEY } from '../ConstatantStrings'
 
 function EditScreen(props) {
     
@@ -13,7 +14,7 @@ function EditScreen(props) {
         width: '50%'
      }
 
-    const data = localStorage.getItem("DataBase");
+    const data = localStorage.getItem(DATABASE_KEY);
     const Database = JSON.parse(data)
     const { index } = useParams();
     var survey  = Database.surveys[index];
@@ -22,7 +23,7 @@ function EditScreen(props) {
     function saveChange( ){
         Database.surveys[index] = refsurvey.current;
         const stringData = JSON.stringify(Database);
-        localStorage.setItem("DataBase",stringData);
+        localStorage.setItem(DATABASE_KEY,stringData);
         
     }
 

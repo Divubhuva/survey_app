@@ -2,11 +2,12 @@ import React,{useState} from 'react';
 import { Grid,Paper, TextField, Button } from '@material-ui/core';
 import {login, isUserLogin } from '../UserAction'
 import { useHistory } from 'react-router-dom';
+import { DEFAULT_PASSWORD, DEFAULT_USERNAME, LOGIN_ERROR_MESSAGE } from '../ConstatantStrings'
 
 function LoginScreen() {
 
-    const [username, setUsernam] = useState("admin");
-    const [password, setPassword] = useState("admin");
+    const [username, setUsernam] = useState(DEFAULT_USERNAME);
+    const [password, setPassword] = useState(DEFAULT_PASSWORD);
     const [message, setMessage] = useState("");
     const history = useHistory()
 
@@ -16,7 +17,7 @@ function LoginScreen() {
             history.push('/yoursurveys');
         }
         else{
-            setMessage("Invalid Username or Password!!");
+            setMessage(LOGIN_ERROR_MESSAGE);
         }
     }
 

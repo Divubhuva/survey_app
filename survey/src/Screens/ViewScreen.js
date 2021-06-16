@@ -3,10 +3,11 @@ import {useHistory, useParams} from "react-router-dom"
 import ViewForm from '../Components/ViewForm'
 import {isUserLogin} from '../UserAction'
 import Settings from '../Components/Settings'
+import { DATABASE_KEY } from '../ConstatantStrings'
 
 function ViewScreen(props) {
     const history = useHistory();
-    const data = localStorage.getItem("DataBase");
+    const data = localStorage.getItem(DATABASE_KEY);
     const Database = JSON.parse(data);
     const { index } = useParams(); 
     const survey  = Database.surveys[index];
