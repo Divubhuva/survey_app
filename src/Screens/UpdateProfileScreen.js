@@ -62,8 +62,8 @@ function UpdateProfileScreen() {
                 <Button 
                     onClick={()=>{requestToUpdate(firstname,lastName)}} 
                     type='submit' 
-                    variant="contained" s
-                    tyle={btnstyle} 
+                    variant="contained"
+                    style={btnstyle} 
                     fullWidth>
                         Update
                 </Button>
